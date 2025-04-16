@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert images to Data URI for web development. Fast, secure, and free tool to encode PNG, JPEG, GIF, WEBP to base64 Data URI.">
+  <meta name="keywords" content="image to Data URI converter, convert image to Data URI online, Data URI generator, image encoding tool, base64 image converter, embed images in HTML, Data URI for web development">
+  <title>Free Image to Data URI Converter - Fast & Secure</title>
+  <style>
+    /* Base styles */
+    :root {
+      --color-primary: #3b82f6;
+      --color-primary-light: #4da6ff;
+      --color-primary-dark: #1e40af;
+      --color-dark: #1a202c;
+      --color-dark-light: #2d3748;
+      --color-dark-darker: #121212;
+      --color-gray-300: #d1d5db;
+      --color-gray-400: #9ca3af;
+      --color-gray-500: #6b7280;
+      --color-gray-600: #4b5563;
+      --color-gray-700: #374151;
+      --color-gray-800: #1f2937;
+      --color-red-400: #f87171;
+      --color-red-500: #ef4444;
+      --color-red-800: #991b1b;
+      --color-yellow-500: #eab308;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: var(--color-dark-darker);
+      color: white;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Layout */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    header {
+      background-color: var(--color-dark);
+      border-bottom: 1px solid var(--color-gray-800);
+      padding: 1rem 0;
+    }
+    
+    main {
+      padding: 2rem 0;
+    }
+    
+    footer {
+      background-color: var(--color-dark);
+      border-top: 1px solid var(--color-gray-800);
+      padding: 1.5rem 0;
+      text-align: center;
+      color: var(--color-gray-400);
+      font-size: 0.875rem;
+    }
+    
+    /* Typography */
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    
+    h3 {
+      font-size: 1.125rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    
+    p {
+      margin-bottom: 1rem;
+    }
+    
+    /* Components */
+    .flex {
+      display: flex;
+    }
+    
+    .flex-col {
+      flex-direction: column;
+    }
+    
+    .items-center {
+      align-items: center;
+    }
+    
+    .justify-center {
+      justify-content: center;
+    }
+    
+    .space-x-2 > * + * {
+      margin-left: 0.5rem;
+    }
+    
+    .mt-2 {
+      margin-top: 0.5rem;
+    }
+    
+    .mt-4 {
+      margin-top: 1rem;
+    }
+    
+    .mt-6 {
+      margin-top: 1.5rem;
+    }
+    
+    .mt-8 {
+      margin-top: 2rem;
+    }
+    
+    .mb-2 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .mb-3 {
+      margin-bottom: 0.75rem;
+    }
+    
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+    
+    .mb-6 {
+      margin-bottom: 1.5rem;
+    }
+    
+    .mb-8 {
+      margin-bottom: 2rem;
+    }
+    
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .p-2 {
+      padding: 0.5rem;
+    }
+    
+    .p-3 {
+      padding: 0.75rem;
+    }
+    
+    .p-4 {
+      padding: 1rem;
+    }
+    
+    .p-8 {
+      padding: 2rem;
+    }
+    
+    .px-3 {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+    
+    .px-6 {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    
+    .py-1 {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+    }
+    
+    .py-2 {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    
+    .w-full {
+      width: 100%;
+    }
+    
+    .max-w-full {
+      max-width: 100%;
+    }
+    
+    .max-w-xl {
+      max-width: 36rem;
+    }
+    
+    .max-h-64 {
+      max-height: 16rem;
+    }
+    
+    .h-32 {
+      height: 8rem;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    .text-xs {
+      font-size: 0.75rem;
+    }
+    
+    .text-sm {
+      font-size: 0.875rem;
+    }
+    
+    .text-lg {
+      font-size: 1.125rem;
+    }
+    
+    .text-xl {
+      font-size: 1.25rem;
+    }
+    
+    .text-2xl {
+      font-size: 1.5rem;
+    }
+    
+    .font-medium {
+      font-weight: 500;
+    }
+    
+    .font-semibold {
+      font-weight: 600;
+    }
+    
+    .font-bold {
+      font-weight: 700;
+    }
+    
+    .font-mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    
+    .text-white {
+      color: white;
+    }
+    
+    .text-gray-300 {
+      color: var(--color-gray-300);
+    }
+    
+    .text-gray-400 {
+      color: var(--color-gray-400);
+    }
+    
+    .text-gray-500 {
+      color: var(--color-gray-500);
+    }
+    
+    .text-red-500 {
+      color: var(--color-red-500);
+    }
+    
+    .text-yellow-500 {
+      color: var(--color-yellow-500);
+    }
+    
+    .bg-primary {
+      background-color: var(--color-primary);
+    }
+    
+    .bg-primary-light {
+      background-color: var(--color-primary-light);
+    }
+    
+    .bg-dark {
+      background-color: var(--color-dark);
+    }
+    
+    .bg-dark-light {
+      background-color: var(--color-dark-light);
+    }
+    
+    .bg-dark-darker {
+      background-color: var(--color-dark-darker);
+    }
+    
+    .bg-gray-700 {
+      background-color: var(--color-gray-700);
+    }
+    
+    .bg-gray-600 {
+      background-color: var(--color-gray-600);
+    }
+    
+    .bg-red-900\/30 {
+      background-color: rgba(127, 29, 29, 0.3);
+    }
+    
+    .hover\:bg-primary-light:hover {
+      background-color: var(--color-primary-light);
+    }
+    
+    .hover\:bg-gray-600:hover {
+      background-color: var(--color-gray-600);
+    }
+    
+    .border {
+      border-width: 1px;
+      border-style: solid;
+    }
+    
+    .border-gray-700 {
+      border-color: var(--color-gray-700);
+    }
+    
+    .border-gray-800 {
+      border-color: var(--color-gray-800);
+    }
+    
+    .border-red-800 {
+      border-color: var(--color-red-800);
+    }
+    
+    .rounded-md {
+      border-radius: 0.375rem;
+    }
+    
+    .object-contain {
+      object-fit: contain;
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    .relative {
+      position: relative;
+    }
+    
+    .absolute {
+      position: absolute;
+    }
+    
+    .top-2 {
+      top: 0.5rem;
+    }
+    
+    .right-2 {
+      right: 0.5rem;
+    }
+    
+    .transition-colors {
+      transition-property: color, background-color, border-color;
+      transition-duration: 150ms;
+    }
+    
+    .cursor-pointer {
+      cursor: pointer;
+    }
+    
+    .disabled\:opacity-50:disabled {
+      opacity: 0.5;
+    }
+    
+    .disabled\:cursor-not-allowed:disabled {
+      cursor: not-allowed;
+    }
+    
+    /* Custom components */
+    .drop-area {
+      border: 2px dashed var(--color-primary);
+      border-radius: 0.5rem;
+      background-color: rgba(59, 130, 246, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .drop-area:hover, .drop-area.active {
+      background-color: rgba(59, 130, 246, 0.2);
+      border-color: var(--color-primary-light);
+    }
+    
+    .ad-container {
+      min-height: 90px;
+      background-color: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 0.875rem;
+    }
+    
+    .side-ad {
+      min-width: 160px;
+      min-height: 600px;
+    }
+    
+    .spinner {
+      border: 3px solid rgba(59, 130, 246, 0.1);
+      border-radius: 50%;
+      border-top: 3px solid var(--color-primary);
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+      margin-right: 8px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    button {
+      transition: all 0.2s ease;
+    }
+    
+    button:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    button:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+    
+    .tooltip {
+      position: relative;
+    }
+    
+    .tooltip:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 5px 10px;
+      background-color: var(--color-dark-light);
+      color: white;
+      border-radius: 4px;
+      font-size: 12px;
+      white-space: nowrap;
+      z-index: 10;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Responsive layout */
+    .layout {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .main-content {
+      flex: 1;
+    }
+    
+    .side-ads {
+      display: none;
+    }
+    
+    @media (min-width: 1024px) {
+      .layout {
+        flex-direction: row;
+      }
+      
+      .side-ads {
+        display: block;
+        width: 16.666667%;
+      }
+      
+      .side-ads.left {
+        margin-right: 1.5rem;
+      }
+      
+      .side-ads.right {
+        margin-left: 1.5rem;
+      }
+      
+      .main-content {
+        width: 66.666667%;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .drop-area {
+        padding: 1rem;
+      }
+      
+      .ad-container {
+        min-height: 60px;
+      }
+    }
+    
+    @media print {
+      .ad-container {
+        display: none;
+      }
+      
+      body {
+        background-color: white;
+        color: black;
+      }
+      
+      .drop-area, button {
+        display: none;
+      }
+      
+      .data-uri-result {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>Image to Data URI Converter</h1>
+    </div>
+  </header>
+  
+  <!-- Main content -->
+  <main>
+    <div class="container">
+      <!-- Top ad banner -->
+      <div class="ad-container w-full mb-6">
+        <div>Advertisement</div>
+        <!-- Google AdSense code will be inserted here -->
+      </div>
+      
+      <div class="layout">
+        <!-- Left side ad -->
+        <div class="side-ads left">
+          <div class="ad-container side-ad">
+            <div>Advertisement</div>
+            <!-- Google AdSense code will be inserted here -->
+          </div>
+        </div>
+        
+        <!-- Main content -->
+        <div class="main-content">
+          <!-- Introduction -->
+          <div class="mb-8">
+            <h2 class="text-xl font-semibold mb-3">Free Image to Data URI Converter</h2>
+            <p class="text-gray-300">
+              Use our free image to Data URI converter to easily encode images as base64 for faster web performance and inline HTML/CSS embedding. 
+              Data URIs allow you to embed image data directly in your HTML or CSS files, reducing HTTP requests and improving page load times.
+            </p>
+          </div>
+          
+          <!-- File input -->
+          <div class="w-full max-w-xl mx-auto">
+            <div id="drop-area" class="drop-area p-8 flex flex-col items-center justify-center cursor-pointer">
+              <svg class="w-16 h-16 text-primary mb-4" width="64" height="64" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              <p class="text-lg font-medium mb-2">Select Image</p>
+              <p class="text-sm text-gray-400 mb-4 text-center">
+                Drag and drop your image here, or click to browse
+              </p>
+              <p class="text-xs text-gray-500 text-center">
+                Supported formats: PNG, JPEG, GIF, BMP, WEBP
+                <br>
+                Maximum size: 5MB (up to 20MB allowed)
+              </p>
+              <input id="file-input" type="file" class="hidden" accept=".png,.jpg,.jpeg,.gif,.bmp,.webp">
+            </div>
+            
+            <div id="error-message" class="mt-2 text-sm hidden"></div>
+            
+            <div id="file-info" class="mt-4 p-4 bg-dark-light rounded-md hidden">
+              <p class="text-sm font-medium">Selected file:</p>
+              <p id="file-details" class="text-xs text-gray-400"></p>
+            </div>
+          </div>
+          
+          <!-- Convert button -->
+          <div id="convert-button-container" class="mt-6 flex justify-center hidden">
+            <button id="convert-button" class="bg-primary hover:bg-primary-light text-white px-6 py-2 rounded-md font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+              Convert to Data URI
+            </button>
+          </div>
+          
+          <!-- Image preview -->
+          <div id="image-preview-container" class="mt-6 flex flex-col items-center hidden">
+            <h3 class="text-lg font-medium mb-3">Image Preview</h3>
+            <div class="border border-gray-700 rounded-md p-2 bg-dark-darker">
+              <img id="image-preview" src="" alt="Preview of image to be converted" class="max-w-full max-h-64 object-contain">
+            </div>
+          </div>
+          
+          <!-- Data URI result -->
+          <div id="data-uri-result" class="mt-6 w-full hidden">
+            <h3 class="text-lg font-medium mb-3">Generated Data URI</h3>
+            <div class="relative">
+              <textarea id="data-uri-textarea" class="w-full h-32 p-3 bg-dark-darker border border-gray-700 rounded-md text-sm text-gray-300 font-mono" readonly></textarea>
+              <div class="absolute top-2 right-2 flex space-x-2">
+                <button id="copy-button" class="bg-primary hover:bg-primary-light text-white px-3 py-1 rounded-md text-sm transition-colors tooltip" data-tooltip="Copy to clipboard">
+                  Copy
+                </button>
+                <button id="download-button" class="bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded-md text-sm transition-colors tooltip" data-tooltip="Download as text file">
+                  Download
+                </button>
+              </div>
+            </div>
+            <p class="mt-2 text-xs text-gray-400">
+              This Data URI can be used directly in HTML img tags or CSS background-image properties.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Right side ad -->
+        <div class="side-ads right">
+          <div class="ad-container side-ad">
+            <div>Advertisement</div>
+            <!-- Google AdSense code will be inserted here -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom ad banner -->
+      <div class="ad-container w-full mt-8">
+        <div>Advertisement</div>
+        <!-- Google AdSense code will be inserted here -->
+      </div>
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© <span id="current-year"></span> Richard Crane. All rights reserved.</p>
+      <p class="mt-2">
+        Convert PNG, JPEG, GIF, BMP, WEBP images to base64 Data URI for web development.
+      </p>
+    </div>
+  </footer>
+  
+  <script>
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // DOM elements
+    const dropArea = document.getElementById('drop-area');
+    const fileInput = document.getElementById('file-input');
+    const errorMessage = document.getElementById('error-message');
+    const fileInfo = document.getElementById('file-info');
+    const fileDetails = document.getElementById('file-details');
+    const convertButtonContainer = document.getElementById('convert-button-container');
+    const convertButton = document.getElementById('convert-button');
+    const imagePreviewContainer = document.getElementById('image-preview-container');
+    const imagePreview = document.getElementById('image-preview');
+    const dataUriResult = document.getElementById('data-uri-result');
+    const dataUriTextarea = document.getElementById('data-uri-textarea');
+    const copyButton = document.getElementById('copy-button');
+    const downloadButton = document.getElementById('download-button');
+    
+    // Configuration
+    const maxFileSize = 5 * 1024 * 1024; // 5MB
+    const absoluteMaxSize = 20 * 1024 * 1024; // 20MB
+    const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif', 'image/bmp', 'image/webp'];
+    
+    // Event listeners
+    dropArea.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', handleFileSelect);
+    dropArea.addEventListener('dragenter', handleDragEnter);
+    dropArea.addEventListener('dragover', handleDragOver);
+    dropArea.addEventListener('dragleave', handleDragLeave);
+    dropArea.addEventListener('drop', handleDrop);
+    convertButton.addEventListener('click', convertToDataUri);
+    copyButton.addEventListener('click', copyToClipboard);
+    downloadButton.addEventListener('click', downloadAsFile);
+    
+    // Handle file selection
+    function handleFileSelect(e) {
+      const file = e.target.files[0];
+      if (file) {
+        validateAndProcessFile(file);
+      }
+    }
+    
+    // Handle drag events
+    function handleDragEnter(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      dropArea.classList.add('active');
+    }
+    
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      dropArea.classList.add('active');
+    }
+    
+    function handleDragLeave(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      dropArea.classList.remove('active');
+    }
+    
+    function handleDrop(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      dropArea.classList.remove('active');
+      
+      const file = e.dataTransfer.files[0];
+      if (file) {
+        validateAndProcessFile(file);
+      }
+    }
+    
+    // Validate and process file
+    function validateAndProcessFile(file) {
+      // Reset UI
+      resetUI();
+      
+      // Validate file type
+      if (!allowedTypes.includes(file.type)) {
+        showError(`Invalid file type. Allowed types: PNG, JPEG, GIF, BMP, WEBP`, 'error');
+        return;
+      }
+      
+      // Validate file size
+      if (file.size > absoluteMaxSize) {
+        showError(`File size exceeds the maximum limit of ${absoluteMaxSize / (1024 * 1024)}MB`, 'error');
+        return;
+      }
+      
+      // Warn if file size exceeds default limit but is within absolute max
+      if (file.size > maxFileSize) {
+        showError(`Warning: File size exceeds the recommended limit of ${maxFileSize / (1024 * 1024)}MB`, 'warning');
+      }
+      
+      // Show file info
+      fileDetails.textContent = `${file.name} (${(file.size / (1024 * 1024)).toFixed(2)}MB)`;
+      fileInfo.classList.remove('hidden');
+      
+      // Show convert button
+      convertButtonContainer.classList.remove('hidden');
+      
+      // Show image preview
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        imagePreview.src = e.target.result;
+        imagePreviewContainer.classList.remove('hidden');
+      };
+      reader.readAsDataURL(file);
+      
+      // Store file for conversion
+      convertButton.file = file;
+    }
+    
+    // Convert to Data URI
+    function convertToDataUri() {
+      const file = convertButton.file;
+      if (!file) return;
+      
+      // Show processing state
+      convertButton.disabled = true;
+      const originalText = convertButton.innerHTML;
+      convertButton.innerHTML = '<span class="spinner"></span>Processing...';
+      
+      // Convert file to Data URI
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        // Reset button state
+        convertButton.disabled = false;
+        convertButton.innerHTML = originalText;
+        
+        // Show Data URI result
+        dataUriTextarea.value = e.target.result;
+        dataUriResult.classList.remove('hidden');
+        
+        // Scroll to result
+        dataUriResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      };
+      
+      reader.onerror = function() {
+        // Reset button state
+        convertButton.disabled = false;
+        convertButton.innerHTML = originalText;
+        
+        // Show error
+        showError('An error occurred while processing the image.', 'error');
+      };
+      
+      reader.readAsDataURL(file);
+    }
+    
+    // Copy to clipboard
+    function copyToClipboard() {
+      dataUriTextarea.select();
+      document.execCommand('copy');
+      
+      // Show copied state
+      const originalText = copyButton.textContent;
+      copyButton.textContent = 'Copied!';
+      setTimeout(() => {
+        copyButton.textContent = originalText;
+      }, 2000);
+    }
+    
+    // Download as text file
+    function downloadAsFile() {
+      const dataUri = dataUriTextarea.value;
+      const element = document.createElement('a');
+      const file = new Blob([dataUri], {type: 'text/plain'});
+      element.href = URL.createObjectURL(file);
+      element.download = 'data-uri.txt';
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+    }
+    
+    // Show error message
+    function showError(message, type) {
+      errorMessage.textContent = message;
+      errorMessage.classList.remove('hidden', 'text-red-500', 'text-yellow-500');
+      
+      if (type === 'error') {
+        errorMessage.classList.add('text-red-500');
+      } else if (type === 'warning') {
+        errorMessage.classList.add('text-yellow-500');
+      }
+    }
+    
+    // Reset UI
+    function resetUI() {
+      errorMessage.classList.add('hidden');
+      errorMessage.textContent = '';
+      fileInfo.classList.add('hidden');
+      convertButtonContainer.classList.add('hidden');
+      dataUriResult.classList.add('hidden');
+    }
+    
+    // Google AdSense integration
+    function loadGoogleAds() {
+      // This function would be used to load Google AdSense when publisher ID is available
+      // Replace placeholder with actual AdSense code
+      
+      // Example:
+      // (adsbygoogle = window.adsbygoogle || []).push({});
+    }
+    
+    // Security measures
+    function sanitizeHTML(str) {
+      return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize any components that need setup
+      resetUI();
+    });
+  </script>
+</body>
+</html>
