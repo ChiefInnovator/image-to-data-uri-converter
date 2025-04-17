@@ -1,6 +1,19 @@
 # Image to Data URL Converter
 
+<a href="https://github.com/ChiefInnovator/image-to-data-uri-converter/stargazers">
+  <img
+    src="https://img.shields.io/github/stars/ChiefInnovator/image-to-data-uri-converter?style=social"
+    alt="GitHub stars"
+  />
+</a>
+
 A simple, elegant web application that converts images to Data URLs for use in web development.
+
+---
+
+**Repository:** [https://github.com/ChiefInnovator/image-to-data-uri-converter](https://github.com/ChiefInnovator/image-to-data-uri-converter)
+
+---
 
 ## Features
 
