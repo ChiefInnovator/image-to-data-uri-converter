@@ -6,6 +6,11 @@
     alt="GitHub stars"
   />
 </a>
+<a href="https://azure.microsoft.com/en-us/products/app-service/static" target="_blank">
+  <img src="https://img.shields.io/badge/Deployed%20on-Azure%20Static%20Web%20Apps-0078D4?logo=azure" alt="Azure Static Web Apps Badge" />
+</a>
+
+> **This application is deployed live on Azure using Azure Static Web Apps.**
 
 A simple, elegant web application that converts images to Data URLs for use in web development.
 
@@ -42,13 +47,26 @@ A simple, elegant web application that converts images to Data URLs for use in w
 
 ## Deployment
 
-This application can be deployed as a static website to any hosting service, including:
+**Primary Deployment:**
+
+This application is live and hosted on **Azure Static Web Apps**, which provides fast, secure, and scalable global hosting for static sites.
+
+You can also deploy it to any other static hosting service, including:
 
 - GitHub Pages
 - Netlify
 - Vercel
-- Azure Static Web Apps
 - Amazon S3
+
+## AI & Tools Used
+
+This application was built using a number of different AI models, agents, and tools including GitHub Copilot, Grok, Manus, Windsurf, Visual Studio Code, Claude 3.7 Sonnet, ChatGPT 4o, GPT 4.1.
+
+Additional resources:
+- https://favicon.io/favicon-converter/
+- https://iconfst.com/
+
+Total time to create this was less than 24 hours.
 
 ## Credits
 
