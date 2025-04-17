@@ -18,6 +18,58 @@
   <link rel="apple-touch-icon" href="icon-192.png" />
 
   <style>
+    /* Tool description styles */
+    .tool-description {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #6b7280;
+      font-size: 1.125rem;
+    }
+    .tool-why {
+      display: block;
+      margin-top: 0.25rem;
+      color: #4b5563;
+      font-size: 1rem;
+      font-style: italic;
+    }
+    /* Learning section styles */
+    .learning-section {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .learning-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .learning-label {
+      font-weight: 500;
+      color: #4b5563;
+      margin-right: 0.5rem;
+      font-size: 1.25rem;
+      white-space: nowrap;
+    }
+    .learning-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+    .learning-icon {
+      vertical-align: middle;
+    }
+    .learning-desc-mdn {
+      font-size: 1rem;
+      color: #6366f1;
+    }
+    .learning-desc-wiki {
+      font-size: 1rem;
+      color: #222;
+    }
+
     /* Base styles */
     * {
       margin: 0;
@@ -386,24 +438,35 @@
 
   <div class="container">
     <h1>Image to Data URI Converter</h1>
+    <p class="tool-description">
+      Effortlessly convert images to Data URLs for seamless embedding in web pages and applications. Instantly integrate images into HTML or CSS without relying on external files.
+    </p>
+    <div class="learning-section">
+      <div class="learning-row">
+        <span class="learning-label">Learn more about Data URLs:</span>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data" target="_blank" rel="noopener" title="MDN: Data URLs - Official documentation on Data URLs, syntax, and usage." class="learning-link">
+          <!-- Book icon SVG -->
+          <svg width="24" height="24" fill="none" stroke="#6366f1" stroke-width="2" viewBox="0 0 24 24" class="learning-icon">
+            <rect x="4" y="4" width="16" height="16" rx="2" fill="#fff" stroke="#6366f1"/>
+            <path d="M8 4v16" stroke="#6366f1" stroke-width="2"/>
+          </svg>
+          <span class="learning-desc-mdn">MDN Web Docs</span>
+        </a>
+        <a href="https://en.wikipedia.org/wiki/Data_URI_scheme" target="_blank" rel="noopener" title="Wikipedia: Data URI scheme - General background information." class="learning-link">
+          <!-- Wikipedia W icon SVG -->
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" class="learning-icon">
+            <text x="3" y="18" font-family="serif" font-size="18" fill="#222">W</text>
+          </svg>
+          <span class="learning-desc-wiki">Wikipedia</span>
+        </a>
+      </div>
+    </div>
 
     <div class="layout">
-      <!-- Left ad -->
-      <div class="ad-container ad-left">
-        <div>Ad Space</div>
-        <!-- Google AdSense code will be inserted here -->
-      </div>
-
       <div class="main-content">
         <div id="app">
           <!-- Content will be dynamically inserted here -->
         </div>
-      </div>
-
-      <!-- Right ad -->
-      <div class="ad-container ad-right">
-        <div>Ad Space</div>
-        <!-- Google AdSense code will be inserted here -->
       </div>
     </div>
   </div>
