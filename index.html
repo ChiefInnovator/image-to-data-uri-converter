@@ -3,7 +3,7 @@
 
 <head>
   <!-- Content Security Policy for improved security -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://pagead2.googlesyndication.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; connect-src 'self'; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://pagead2.googlesyndication.com https://cdnjs.buymeacoffee.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; connect-src 'self'; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; font-src 'self' https://cdnjs.buymeacoffee.com; object-src 'none'; base-uri 'self'; form-action 'self';" />
   <meta name="google-adsense-account" content="ca-pub-1769530151228137" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1769530151228137"
     crossorigin="anonymous"></script>
@@ -415,7 +415,47 @@
       color: white;
       text-align: center;
       font-size: 0.875rem;
-      margin-top: 1rem;
+      padding: 0.5rem;
+      margin-top: 0.2rem;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    
+    .footer p {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    
+    .bmc-container {
+      margin-top: 0.5rem;
+      transform: scale(0.92);
+      transform-origin: center center;
+    }
+    
+    /* Additional styling for Buy Me a Coffee button */
+    .bmc-btn {
+      transform: scale(0.92) !important;
+      height: auto !important;
+    }
+    
+    @media (min-width: 768px) {
+      .footer-content {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+      }
+      
+      .bmc-container {
+        margin-top: 0;
+      }
     }
 
     /* Responsive */
@@ -502,6 +542,7 @@
 </head>
 
 <body>
+
   <!-- Top ad -->
   <div class="ad-container ad-top">
     <div>Ad Space</div>
@@ -509,7 +550,7 @@
   </div>
 
   <div class="container">
-    <h1>Image to Data URI Converter</h1>
+    <h1>Image to Data URL Converter</h1>
     <p class="tool-description">
       Effortlessly convert images to Data URLs for seamless embedding in web pages and applications. Instantly integrate images into HTML or CSS without relying on external files.
     </p>
@@ -546,7 +587,7 @@
             <li><b>Upload an image</b> by dragging it here or clicking the upload area.</li>
             <li><b>Preview your image</b> to confirm it's correct.</li>
             <li>Click <b><span class="step-badge">1</span>Convert</b> to generate the Data URL.</li>
-            <li>Click <b><span class="step-badge">2</span>Copy URI</b> to copy the Data URL to your clipboard.</li>
+            <li>Click <b><span class="step-badge">2</span>Copy URL</b> to copy the Data URL to your clipboard.</li>
             <li>Paste the Data URL into your HTML or CSS where you want the image to appear.</li>
           </ol>
         </div>
@@ -554,16 +595,15 @@
     </div>
   </div>
 
-  <!-- Bottom ad -->
-  <div class="ad-container ad-bottom">
-    <div>Ad Space</div>
-    <!-- Google AdSense code will be inserted here -->
-  </div>
-
   <footer class="footer">
-    <p>
-      © <span id="current-year"></span> Richard Crane. All rights reserved.
-    </p>
+    <div class="footer-content">
+      <p>
+        © <span id="current-year"></span>&nbsp;Richard Crane. All rights reserved.
+      </p>
+      <div class="bmc-container">
+        <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="richcrane" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
+      </div>
+    </div>
   </footer>
 
   <!-- Fixed action buttons -->
