@@ -1,6 +1,10 @@
 {
-    "route": "/*.html",
-    "headers": {
-      "Cache-Control": "no-cache, no-store, must-revalidate"
+  "routes": [
+    {
+      "route": "/*.html",
+      "headers": {
+        "Cache-Control": "no-cache, no-store, must-revalidate"
+      }
     }
-  }
+  ]
+}
