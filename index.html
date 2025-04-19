@@ -291,6 +291,39 @@
       This eliminates HTTP requests for small images, improving page load performance.
     </p>
 
+    <!-- Learning Resources Section -->
+    <div>
+      <div class="learning-label">What is a Data URL?</div>
+      <div class="resource-tabs">
+        <a href="about-data-urls.html" class="resource-tab learn-more">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          Learn More
+        </a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data" target="_blank" rel="noopener" title="MDN: Data URLs - Official documentation on Data URLs, syntax, and usage." class="resource-tab mdn">
+          <svg width="20" height="20" fill="none" stroke="#6366f1" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="4" y="4" width="16" height="16" rx="2" fill="#fff" stroke="#6366f1"/>
+            <path d="M8 4v16" stroke="#6366f1" stroke-width="2"/>
+          </svg>
+          MDN Web Docs
+        </a>
+        <a href="https://en.wikipedia.org/wiki/Data_URI_scheme" target="_blank" rel="noopener" title="Wikipedia: Data URI scheme - General background information." class="resource-tab wiki">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+            <text x="3" y="18" font-family="serif" font-size="18" fill="#3b82f6">W</text>
+          </svg>
+          Wikipedia
+        </a>
+        <a href="https://www.youtube.com/results?search_query=data+urls" target="_blank" rel="noopener" title="YouTube: Data URLs - Video tutorials and explanations." class="resource-tab youtube">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="5" width="20" height="14" rx="4" fill="#FF0000"/>
+            <polygon points="10,9 16,12 10,15" fill="#fff"/>
+          </svg>
+          YouTube
+        </a>
+      </div>
+    </div>
+
     <div class="upload-container" id="upload-container">
       <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
@@ -421,97 +454,82 @@ document.body.appendChild(img);</code></pre>
 
   <script>
     // Set current year in footer
-    document.getElementById("current-year").textContent = new Date().getFullYear() + " ";
+    document.getElementById("current-year").textContent = new Date().getFullYear();
 
-    // File upload handling
-    const uploadContainer = document.getElementById("upload-container");
+    // File upload and conversion logic
     const fileInput = document.getElementById("file-input");
     const uploadButton = document.getElementById("upload-button");
+    const uploadContainer = document.getElementById("upload-container");
     const resultContainer = document.getElementById("result-container");
     const previewImage = document.getElementById("preview-image");
     const resultCode = document.getElementById("result-code");
     const copyButton = document.getElementById("copy-button");
     const convertAnotherButton = document.getElementById("convert-another-button");
 
-    // Handle file selection via button
+    // Handle file selection
     uploadButton.addEventListener("click", () => {
       fileInput.click();
     });
 
-    // Handle file selection
     fileInput.addEventListener("change", handleFileSelect);
 
     // Handle drag and drop
     uploadContainer.addEventListener("dragover", (e) => {
       e.preventDefault();
+      e.stopPropagation();
       uploadContainer.style.borderColor = "#8b5cf6";
       uploadContainer.style.backgroundColor = "#f3f4f6";
     });
 
     uploadContainer.addEventListener("dragleave", (e) => {
       e.preventDefault();
+      e.stopPropagation();
       uploadContainer.style.borderColor = "#d1d5db";
       uploadContainer.style.backgroundColor = "#f9fafb";
     });
 
     uploadContainer.addEventListener("drop", (e) => {
       e.preventDefault();
+      e.stopPropagation();
       uploadContainer.style.borderColor = "#d1d5db";
       uploadContainer.style.backgroundColor = "#f9fafb";
-      
-      if (e.dataTransfer.files.length) {
-        handleFiles(e.dataTransfer.files);
+
+      const dt = e.dataTransfer;
+      const files = dt.files;
+
+      if (files.length > 0) {
+        fileInput.files = files;
+        handleFileSelect();
       }
     });
 
-    // Handle file processing
-    function handleFileSelect(e) {
-      if (e.target.files.length) {
-        handleFiles(e.target.files);
-      }
-    }
+    // Handle file selection
+    function handleFileSelect() {
+      const file = fileInput.files[0];
+      if (!file) return;
 
-    function handleFiles(files) {
-      const file = files[0];
-      
-      if (!file.type.match('image.*')) {
-        alert('Please select an image file.');
-        return;
-      }
-      
       const reader = new FileReader();
-      
-      reader.onload = function(e) {
+      reader.onload = function (e) {
         const dataUrl = e.target.result;
-        
-        // Display the result
         previewImage.src = dataUrl;
         resultCode.value = dataUrl;
-        
-        // Show result container, hide upload container
         uploadContainer.style.display = "none";
         resultContainer.style.display = "block";
       };
-      
       reader.readAsDataURL(file);
     }
 
-    // Copy button functionality
+    // Copy data URL to clipboard
     copyButton.addEventListener("click", () => {
-      const textToCopy = resultCode.value;
-      
-      navigator.clipboard.writeText(textToCopy).then(() => {
-        copyButton.textContent = "Copied!";
-        
-        setTimeout(() => {
-          copyButton.textContent = "Copy Data URL";
-        }, 2000);
-      }).catch(err => {
-        console.error('Could not copy text: ', err);
-      });
+      resultCode.select();
+      document.execCommand("copy");
+      copyButton.textContent = "Copied!";
+      setTimeout(() => {
+        copyButton.textContent = "Copy Data URL";
+      }, 2000);
     });
 
-    // Convert another button
+    // Convert another image
     convertAnotherButton.addEventListener("click", () => {
       resultContainer.style.display = "none";
       uploadContainer.style.display = "flex";
@@ -519,7 +537,6 @@ document.body.appendChild(img);</code></pre>
     });
   </script>
   <script src="scripts.js"></script>
-  <script src="schema.js"></script>
 </body>
 
 </html>
