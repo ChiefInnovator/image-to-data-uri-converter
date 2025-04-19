@@ -1,0 +1,46 @@
+.copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0;
+}
+
+.code-block:hover .copy-button {
+  opacity: 1;
+}
+
+.copy-button:hover {
+  background-color: #7c3aed;
+}
+
+.copy-button.copied {
+  background-color: #10b981;
+}
+
+.code-block {
+  position: relative;
+  padding-top: 2rem;
+}
+
+.code-block pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+@media (max-width: 768px) {
+  .copy-button {
+    opacity: 1;
+    top: 0.25rem;
+    right: 0.25rem;
+  }
+}

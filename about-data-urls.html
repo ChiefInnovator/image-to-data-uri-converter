@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Data URLs - Understanding Data URIs in Web Development</title>
+  <meta name="description"
+    content="Learn what Data URLs are, how they work, and their benefits and limitations in web development. Comprehensive guide to understanding and using Data URIs." />
+  <meta name="keywords" content="data urls, data uri, base64 encoding, web development, html, css, javascript" />
+  <meta name="author" content="Richard Crane" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://datauri.ai/about-data-urls.html" />
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:title" content="About Data URLs - Understanding Data URIs in Web Development" />
+  <meta property="og:description" content="Learn what Data URLs are, how they work, and their benefits and limitations in web development. Comprehensive guide to understanding and using Data URIs." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://datauri.ai/about-data-urls.html" />
+  <meta property="og:image" content="https://datauri.ai/icon-192.png" />
+  <meta property="og:site_name" content="DataURI.ai" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About Data URLs - Understanding Data URIs in Web Development" />
+  <meta name="twitter:description" content="Learn what Data URLs are, how they work, and their benefits and limitations in web development. Comprehensive guide to understanding and using Data URIs." />
+  <meta name="twitter:image" content="https://datauri.ai/icon-192.png" />
+  <meta name="twitter:creator" content="@richcrane" />
+
+  <!-- Favicon and App Icons -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#8b5cf6" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="code-copy.css" />
+</head>
+
+<body>
+  <!-- Top ad -->
+  <div class="ad-container">
+    <div>Ad Space</div>
+    <!-- Google AdSense code will be inserted here -->
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav-container">
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about-data-urls.html" class="nav-link active">About Data URLs</a>
+      <a href="tutorials.html" class="nav-link">Tutorials</a>
+      <a href="use-cases.html" class="nav-link">Use Cases</a>
+      <a href="best-practices.html" class="nav-link">Best Practices</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <h1>About Data URLs</h1>
+    
+    <p>
+      Data URLs are a special type of URL that allows you to embed small files directly into HTML, CSS, or JavaScript code as a string of text. 
+      This guide explains what Data URLs are, how they work, and when to use them in your web development projects.
+    </p>
+
+    <h2>What is a Data URL?</h2>
+    <p>
+      A Data URL (also known as a Data URI) is a URI scheme that allows you to include data inline in web pages as if they were external resources.
+      Instead of pointing to a file location, a Data URL contains the actual content of the file, typically encoded in Base64 format.
+    </p>
+
+    <p>The general syntax of a Data URL is:</p>
+    <div class="code-block">
+      <pre><code>data:[&lt;media type&gt;][;base64],&lt;data&gt;</code></pre>
+    </div>
+
+    <p>For example, a simple red dot image as a Data URL might look like this:</p>
+    <div class="code-block">
+      <pre><code>data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==</code></pre>
+    </div>
+
+    <h2>How Data URLs Work</h2>
+    <p>
+      When a browser encounters a Data URL, it decodes the data and processes it as if it had been fetched from an external source.
+      The process works like this:
+    </p>
+
+    <ol>
+      <li>The browser identifies the URL as a Data URL by the <code>data:</code> prefix</li>
+      <li>It determines the media type (e.g., <code>image/png</code>, <code>text/html</code>)</li>
+      <li>It checks if the data is Base64 encoded (indicated by <code>;base64</code>)</li>
+      <li>It decodes the data if necessary</li>
+      <li>It processes the data as if it were loaded from an external file</li>
+    </ol>
+
+    <h2>Components of a Data URL</h2>
+    <p>A Data URL consists of several parts:</p>
+
+    <ul>
+      <li><strong>Prefix</strong>: Always <code>data:</code></li>
+      <li><strong>Media Type</strong>: Optional MIME type (e.g., <code>image/png</code>, <code>text/plain</code>). If omitted, defaults to <code>text/plain;charset=US-ASCII</code></li>
+      <li><strong>Encoding</strong>: Optional <code>;base64</code> if the data is Base64 encoded</li>
+      <li><strong>Data</strong>: The actual content, separated from the preceding parts by a comma</li>
+    </ul>
+
+    <h2>Benefits of Data URLs</h2>
+    <p>Using Data URLs offers several advantages:</p>
+
+    <ul>
+      <li><strong>Reduced HTTP Requests</strong>: Embedding resources directly in HTML or CSS reduces the number of HTTP requests, which can improve page load performance, especially for small files.</li>
+      <li><strong>Simplified Asset Management</strong>: No need to manage separate files for small resources.</li>
+      <li><strong>Offline Availability</strong>: Resources embedded as Data URLs are available even when offline, as they're part of the document.</li>
+      <li><strong>Avoiding Cross-Origin Issues</strong>: Since the resource is part of the document, there are no cross-origin restrictions.</li>
+    </ul>
+
+    <h2>Limitations and Considerations</h2>
+    <p>Data URLs also have some important limitations to consider:</p>
+
+    <ul>
+      <li><strong>Increased File Size</strong>: Base64 encoding increases the size of binary data by approximately 33%.</li>
+      <li><strong>No Separate Caching</strong>: Resources embedded as Data URLs can't be cached separately from the containing document.</li>
+      <li><strong>Performance Impact</strong>: For larger files, the increased size and parsing overhead can negatively impact performance.</li>
+      <li><strong>Browser Limitations</strong>: Some browsers have size limitations for Data URLs or restrict their use in certain contexts.</li>
+      <li><strong>SEO Considerations</strong>: Search engines may not properly index images embedded as Data URLs.</li>
+    </ul>
+
+    <div class="warning">
+      <div class="warning-title">Important</div>
+      <div class="warning-content">
+        Data URLs are best suited for small, frequently used resources. For larger files, traditional URL references with proper caching are usually more efficient.
+      </div>
+    </div>
+
+    <h2>Common Use Cases</h2>
+    <p>Data URLs are particularly useful in these scenarios:</p>
+
+    <ul>
+      <li><strong>Small Images and Icons</strong>: UI elements, icons, and simple graphics that are used throughout a site.</li>
+      <li><strong>SVG Graphics</strong>: Vector graphics that can be efficiently encoded and sometimes even used without Base64 encoding.</li>
+      <li><strong>Web Fonts</strong>: Small font files or icon fonts can be embedded directly in CSS.</li>
+      <li><strong>CSS Backgrounds</strong>: Small, repeating patterns or gradients used as background images.</li>
+      <li><strong>Canvas/WebGL Textures</strong>: Small textures for Canvas or WebGL applications.</li>
+    </ul>
+
+    <h2>Data URL Format Examples</h2>
+    <p>Here are examples of Data URLs for different types of content:</p>
+
+    <h3>Plain Text</h3>
+    <div class="code-block">
+      <pre><code>data:text/plain;charset=UTF-8,Hello%20World!</code></pre>
+    </div>
+
+    <h3>HTML</h3>
+    <div class="code-block">
+      <pre><code>data:text/html;charset=UTF-8,&lt;h1&gt;Hello%20World!&lt;/h1&gt;</code></pre>
+    </div>
+
+    <h3>Image (PNG)</h3>
+    <div class="code-block">
+      <pre><code>data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==</code></pre>
+    </div>
+
+    <h3>SVG</h3>
+    <div class="code-block">
+      <pre><code>data:image/svg+xml;utf8,&lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"&gt;&lt;path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/&gt;&lt;/svg&gt;</code></pre>
+    </div>
+
+    <h2>Browser Support</h2>
+    <p>
+      Data URLs are supported in all modern browsers, including:
+    </p>
+    <ul>
+      <li>Chrome</li>
+      <li>Firefox</li>
+      <li>Safari</li>
+      <li>Edge</li>
+      <li>Opera</li>
+    </ul>
+
+    <p>
+      However, there are some browser-specific limitations to be aware of:
+    </p>
+    <ul>
+      <li>Internet Explorer 8 had a 32 KB size limit for Data URLs</li>
+      <li>Some browsers restrict Data URLs in certain contexts for security reasons</li>
+      <li>Data URLs for JavaScript may be blocked in some contexts</li>
+    </ul>
+
+    <h2>Converting Files to Data URLs</h2>
+    <p>
+      You can convert files to Data URLs using various methods:
+    </p>
+
+    <h3>Using Our Tool</h3>
+    <p>
+      The easiest way is to use our <a href="index.html">Data URL Converter</a> tool, which allows you to upload an image and get its Data URL representation instantly.
+    </p>
+
+    <h3>Using JavaScript</h3>
+    <p>
+      You can also convert files to Data URLs programmatically using JavaScript:
+    </p>
+
+    <div class="code-block">
+      <pre><code>function fileToDataURL(file, callback) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    callback(e.target.result);
+  };
+  reader.readAsDataURL(file);
+}
+
+// Example usage
+const fileInput = document.querySelector('input[type="file"]');
+fileInput.addEventListener('change', function() {
+  if (this.files && this.files[0]) {
+    fileToDataURL(this.files[0], function(dataUrl) {
+      console.log(dataUrl);
+      // Use the Data URL here
+    });
+  }
+});</code></pre>
+    </div>
+
+    <div class="tip">
+      <div class="tip-title">Tip</div>
+      <div class="tip-content">
+        For more advanced usage and examples, check out our <a href="tutorials.html">Tutorials</a> and <a href="use-cases.html">Use Cases</a> pages.
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>© <span id="current-year"></span> Richard Crane. All rights reserved.</p>
+      <div>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookies.html">Cookie Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("current-year").textContent = new Date().getFullYear() + " ";
+  </script>
+  <script src="scripts.js"></script>
+  <script src="schema.js"></script>
+</body>
+
+</html>

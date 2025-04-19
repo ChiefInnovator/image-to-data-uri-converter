@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frequently Asked Questions About Data URLs - DataURI.ai</title>
+  <meta name="description"
+    content="Find answers to common questions about Data URLs. Learn about encoding, browser support, performance considerations, and more." />
+  <meta name="keywords" content="data url faq, data uri questions, base64 encoding help, web development faq" />
+  <meta name="author" content="Richard Crane" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://datauri.ai/faq.html" />
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:title" content="Frequently Asked Questions About Data URLs - DataURI.ai" />
+  <meta property="og:description" content="Find answers to common questions about Data URLs. Learn about encoding, browser support, performance considerations, and more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://datauri.ai/faq.html" />
+  <meta property="og:image" content="https://datauri.ai/icon-192.png" />
+  <meta property="og:site_name" content="DataURI.ai" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Frequently Asked Questions About Data URLs - DataURI.ai" />
+  <meta name="twitter:description" content="Find answers to common questions about Data URLs. Learn about encoding, browser support, performance considerations, and more." />
+  <meta name="twitter:image" content="https://datauri.ai/icon-192.png" />
+  <meta name="twitter:creator" content="@richcrane" />
+
+  <!-- Favicon and App Icons -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#8b5cf6" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="code-copy.css" />
+
+  <style>
+    .faq-item {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .faq-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 1rem;
+    }
+
+    .faq-answer {
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    .faq-category {
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-category h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #111827;
+      border-bottom: 2px solid #f3f4f6;
+      padding-bottom: 0.5rem;
+    }
+
+    .faq-toc {
+      background-color: #f9fafb;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .faq-toc-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 1rem;
+    }
+
+    .faq-toc-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .faq-toc-category {
+      font-weight: 600;
+      color: #4b5563;
+      margin-top: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-toc-item {
+      margin-bottom: 0.5rem;
+      padding-left: 1rem;
+    }
+
+    .faq-toc-link {
+      color: #8b5cf6;
+      text-decoration: none;
+    }
+
+    .faq-toc-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top ad -->
+  <div class="ad-container">
+    <div>Ad Space</div>
+    <!-- Google AdSense code will be inserted here -->
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav-container">
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about-data-urls.html" class="nav-link">About Data URLs</a>
+      <a href="tutorials.html" class="nav-link">Tutorials</a>
+      <a href="use-cases.html" class="nav-link">Use Cases</a>
+      <a href="best-practices.html" class="nav-link">Best Practices</a>
+      <a href="faq.html" class="nav-link active">FAQ</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <h1>Frequently Asked Questions</h1>
+    
+    <p>
+      Find answers to common questions about Data URLs, their usage, and best practices. If you don't see your question answered here, feel free to <a href="about.html">contact us</a>.
+    </p>
+
+    <div class="faq-toc">
+      <div class="faq-toc-title">Quick Navigation</div>
+      <ul class="faq-toc-list">
+        <li class="faq-toc-category">Basics</li>
+        <li class="faq-toc-item"><a href="#what-is-data-url" class="faq-toc-link">What is a Data URL?</a></li>
+        <li class="faq-toc-item"><a href="#data-url-vs-uri" class="faq-toc-link">What's the difference between Data URL and Data URI?</a></li>
+        <li class="faq-toc-item"><a href="#data-url-syntax" class="faq-toc-link">What is the syntax of a Data URL?</a></li>
+        
+        <li class="faq-toc-category">Usage</li>
+        <li class="faq-toc-item"><a href="#when-to-use" class="faq-toc-link">When should I use Data URLs?</a></li>
+        <li class="faq-toc-item"><a href="#when-not-to-use" class="faq-toc-link">When should I avoid using Data URLs?</a></li>
+        <li class="faq-toc-item"><a href="#file-size-limit" class="faq-toc-link">Is there a size limit for Data URLs?</a></li>
+        
+        <li class="faq-toc-category">Technical</li>
+        <li class="faq-toc-item"><a href="#base64-vs-url-encoding" class="faq-toc-link">Should I use Base64 or URL encoding?</a></li>
+        <li class="faq-toc-item"><a href="#browser-support" class="faq-toc-link">Which browsers support Data URLs?</a></li>
+        <li class="faq-toc-item"><a href="#performance-impact" class="faq-toc-link">Do Data URLs affect performance?</a></li>
+      </ul>
+    </div>
+
+    <div class="faq-category">
+      <h2>Basics</h2>
+    </div>
+
+    <div class="faq-item" id="what-is-data-url">
+      <div class="faq-question">What is a Data URL?</div>
+      <div class="faq-answer">
+        <p>
+          A Data URL is a special type of URL that allows you to embed small files directly into HTML, CSS, or JavaScript code as a string of text. Instead of pointing to a file location, a Data URL contains the actual content of the file, typically encoded in Base64 format.
+        </p>
+        <p>
+          Data URLs begin with the <code>data:</code> scheme identifier, followed by a MIME type, an optional Base64 indicator, and the encoded data itself.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item" id="data-url-vs-uri">
+      <div class="faq-question">What's the difference between Data URL and Data URI?</div>
+      <div class="faq-answer">
+        <p>
+          There is no functional difference between a Data URL and a Data URI. The terms are used interchangeably in web development. 
+        </p>
+        <p>
+          Technically, "URI" (Uniform Resource Identifier) is a broader term that encompasses both "URL" (Uniform Resource Locator) and "URN" (Uniform Resource Name). In practice, when referring to the <code>data:</code> scheme, both "Data URL" and "Data URI" refer to the same thing.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item" id="data-url-syntax">
+      <div class="faq-question">What is the syntax of a Data URL?</div>
+      <div class="faq-answer">
+        <p>
+          The general syntax of a Data URL is:
+        </p>
+        <div class="code-block">
+          <pre><code>data:[&lt;media type&gt;][;base64],&lt;data&gt;</code></pre>
+        </div>
+        <p>
+          Where:
+        </p>
+        <ul>
+          <li><code>data:</code> is the scheme identifier</li>
+          <li><code>&lt;media type&gt;</code> is an optional MIME type (e.g., <code>image/png</code>, <code>text/plain</code>). If omitted, it defaults to <code>text/plain;charset=US-ASCII</code></li>
+          <li><code>;base64</code> is an optional indicator that the data is Base64 encoded</li>
+          <li><code>&lt;data&gt;</code> is the actual content, separated from the preceding parts by a comma</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h2>Usage</h2>
+    </div>
+
+    <div class="faq-item" id="when-to-use">
+      <div class="faq-question">When should I use Data URLs?</div>
+      <div class="faq-answer">
+        <p>
+          Data URLs are best used in the following scenarios:
+        </p>
+        <ul>
+          <li>For small images and icons (under 5KB)</li>
+          <li>For SVG graphics that are used throughout a site</li>
+          <li>For small, repeating background patterns</li>
+          <li>When you want to reduce HTTP requests for small resources</li>
+          <li>For embedding images in HTML emails</li>
+          <li>For offline-capable web applications</li>
+        </ul>
+        <p>
+          For more detailed guidance, check our <a href="best-practices.html">Best Practices</a> page.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item" id="when-not-to-use">
+      <div class="faq-question">When should I avoid using Data URLs?</div>
+      <div class="faq-answer">
+        <p>
+          Data URLs should be avoided in these scenarios:
+        </p>
+        <ul>
+          <li>For large images or files (over 5KB)</li>
+          <li>For resources that change frequently</li>
+          <li>For resources that would benefit from separate caching</li>
+          <li>For content that needs to be indexed by search engines</li>
+          <li>When SEO for images is important</li>
+          <li>For resources shared across multiple pages (where caching would be beneficial)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item" id="file-size-limit">
+      <div class="faq-question">Is there a size limit for Data URLs?</div>
+      <div class="faq-answer">
+        <p>
+          Modern browsers don't have a specific size limit for Data URLs, but there are practical limitations:
+        </p>
+        <ul>
+          <li>Internet Explorer 8 had a 32 KB size limit</li>
+          <li>Some browsers may have limits in specific contexts (like URLs in CSS)</li>
+          <li>Large Data URLs can impact performance by increasing HTML/CSS file size and parsing time</li>
+          <li>Memory usage increases with large inline resources</li>
+        </ul>
+        <p>
+          As a best practice, it's recommended to limit Data URLs to resources under 5KB in size.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h2>Technical</h2>
+    </div>
+
+    <div class="faq-item" id="base64-vs-url-encoding">
+      <div class="faq-question">Should I use Base64 or URL encoding?</div>
+      <div class="faq-answer">
+        <p>
+          The choice between Base64 and URL encoding depends on the type of content:
+        </p>
+        <ul>
+          <li><strong>Base64 encoding</strong> is required for binary files like PNG, JPEG, GIF, etc.</li>
+          <li><strong>URL encoding</strong> is often more efficient for text-based files like SVG, HTML, CSS, etc.</li>
+        </ul>
+        <p>
+          For SVG files specifically, URL encoding typically results in a smaller string than Base64 encoding, making it the preferred choice for SVG Data URLs.
+        </p>
+        <div class="code-block">
+          <pre><code>// URL-encoded SVG
+data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22%3E...%3C/svg%3E
+
+// Base64-encoded SVG
+data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+...</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item" id="browser-support">
+      <div class="faq-question">Which browsers support Data URLs?</div>
+      <div class="faq-answer">
+        <p>
+          Data URLs are supported in all modern browsers, including:
+        </p>
+        <ul>
+          <li>Chrome</li>
+          <li>Firefox</li>
+          <li>Safari</li>
+          <li>Edge</li>
+          <li>Opera</li>
+        </ul>
+        <p>
+          However, there are some browser-specific limitations to be aware of:
+        </p>
+        <ul>
+          <li>Internet Explorer 8 had a 32 KB size limit for Data URLs</li>
+          <li>Some browsers restrict Data URLs in certain contexts for security reasons</li>
+          <li>Data URLs for JavaScript may be blocked in some contexts</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item" id="performance-impact">
+      <div class="faq-question">Do Data URLs affect performance?</div>
+      <div class="faq-answer">
+        <p>
+          Data URLs have both positive and negative performance impacts:
+        </p>
+        <h3>Positive impacts:</h3>
+        <ul>
+          <li>Reduce the number of HTTP requests, which can improve initial page load time</li>
+          <li>Eliminate DNS lookups and connection overhead for small resources</li>
+          <li>Ensure resources are available immediately with the HTML/CSS</li>
+        </ul>
+        <h3>Negative impacts:</h3>
+        <ul>
+          <li>Base64 encoding increases file size by approximately 33%</li>
+          <li>Increase HTML/CSS file size and parsing time</li>
+          <li>Cannot be cached separately from the containing document</li>
+          <li>Increase memory usage as part of the document</li>
+        </ul>
+        <p>
+          For optimal performance, use Data URLs for small, frequently used resources that don't change often, and use traditional URL references with proper caching for larger files.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>© <span id="current-year"></span> Richard Crane. All rights reserved.</p>
+      <div>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookies.html">Cookie Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("current-year").textContent = new Date().getFullYear() + " ";
+  </script>
+  <script src="scripts.js"></script>
+  <script src="schema.js"></script>
+</body>
+
+</html>

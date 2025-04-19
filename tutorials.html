@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data URL Tutorials - Step-by-Step Guides for Using Data URIs</title>
+  <meta name="description"
+    content="Learn how to use Data URLs effectively with our step-by-step tutorials. Optimize SVG icons, embed fonts, create efficient CSS sprites, and more." />
+  <meta name="keywords" content="data url tutorials, data uri guide, base64 encoding tutorial, svg optimization, web development" />
+  <meta name="author" content="Richard Crane" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://datauri.ai/tutorials.html" />
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:title" content="Data URL Tutorials - Step-by-Step Guides for Using Data URIs" />
+  <meta property="og:description" content="Learn how to use Data URLs effectively with our step-by-step tutorials. Optimize SVG icons, embed fonts, create efficient CSS sprites, and more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://datauri.ai/tutorials.html" />
+  <meta property="og:image" content="https://datauri.ai/icon-192.png" />
+  <meta property="og:site_name" content="DataURI.ai" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Data URL Tutorials - Step-by-Step Guides for Using Data URIs" />
+  <meta name="twitter:description" content="Learn how to use Data URLs effectively with our step-by-step tutorials. Optimize SVG icons, embed fonts, create efficient CSS sprites, and more." />
+  <meta name="twitter:image" content="https://datauri.ai/icon-192.png" />
+  <meta name="twitter:creator" content="@richcrane" />
+
+  <!-- Favicon and App Icons -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#8b5cf6" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="code-copy.css" />
+
+  <style>
+    .tutorial-step {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .tutorial-step:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .step-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      background-color: #8b5cf6;
+      color: white;
+      font-weight: bold;
+      border-radius: 50%;
+      margin-right: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    .difficulty {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      background-color: #f3f4f6;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #4b5563;
+      margin-right: 0.75rem;
+    }
+
+    .difficulty.beginner {
+      background-color: #d1fae5;
+      color: #065f46;
+    }
+
+    .difficulty.intermediate {
+      background-color: #e0e7ff;
+      color: #3730a3;
+    }
+
+    .difficulty.advanced {
+      background-color: #fee2e2;
+      color: #991b1b;
+    }
+
+    .time-estimate {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+
+    .time-icon {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.25rem;
+    }
+
+    .tutorial-image {
+      max-width: 100%;
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+      border: 1px solid #e5e7eb;
+    }
+
+    .tutorial-note {
+      background-color: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0 0.25rem 0.25rem 0;
+    }
+
+    .tutorial-note-title {
+      font-weight: 600;
+      color: #1e40af;
+      margin-bottom: 0.5rem;
+    }
+
+    .tutorial-note-content {
+      color: #1e3a8a;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top ad -->
+  <div class="ad-container">
+    <div>Ad Space</div>
+    <!-- Google AdSense code will be inserted here -->
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav-container">
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about-data-urls.html" class="nav-link">About Data URLs</a>
+      <a href="tutorials.html" class="nav-link active">Tutorials</a>
+      <a href="use-cases.html" class="nav-link">Use Cases</a>
+      <a href="best-practices.html" class="nav-link">Best Practices</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <h1>Data URL Tutorials</h1>
+    
+    <p>
+      Learn how to use Data URLs effectively with our step-by-step tutorials. These guides cover various use cases and techniques for working with Data URLs in your web projects.
+    </p>
+
+    <h2>Optimizing SVG Icons with Data URLs</h2>
+    <div class="tutorial-step">
+      <div class="step-header">
+        <div class="step-number">1</div>
+        <div class="step-title">Optimize Your SVG</div>
+      </div>
+      <div class="meta">
+        <span class="difficulty intermediate">Intermediate</span>
+        <span class="time-estimate">
+          <svg class="time-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          20 minutes
+        </span>
+      </div>
+      <p>
+        Before converting to a Data URL, optimize your SVG by removing unnecessary attributes and whitespace. Here's a simple SVG icon:
+      </p>
+      <div class="code-block">
+        <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;
+  &lt;circle cx="12" cy="12" r="10"&gt;&lt;/circle&gt;
+  &lt;line x1="12" y1="8" x2="12" y2="16"&gt;&lt;/line&gt;
+  &lt;line x1="8" y1="12" x2="16" y2="12"&gt;&lt;/line&gt;
+&lt;/svg&gt;</code></pre>
+      </div>
+      <p>
+        Before converting SVG to a Data URL, optimize it by removing unnecessary attributes and whitespace. Here's a simple SVG icon:
+      </p>
+    </div>
+
+    <div class="tutorial-step">
+      <div class="step-header">
+        <div class="step-number">2</div>
+        <div class="step-title">Convert SVG to a Data URL</div>
+      </div>
+      <p>
+        Convert your SVG to a Data URL by URL-encoding it and prefixing with <code>data:image/svg+xml,</code>. For SVGs, you can often avoid Base64 encoding:
+      </p>
+      <div class="code-block">
+        <pre><code>const svgContent = `&lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;circle cx="12" cy="12" r="10"&gt;&lt;/circle&gt;&lt;line x1="12" y1="8" x2="12" y2="16"&gt;&lt;/line&gt;&lt;line x1="8" y1="12" x2="16" y2="12"&gt;&lt;/line&gt;&lt;/svg&gt;`;
+
+const dataUrl = 'data:image/svg+xml,' + encodeURIComponent(svgContent);</code></pre>
+      </div>
+    </div>
+
+    <div class="tutorial-step">
+      <div class="step-header">
+        <div class="step-number">3</div>
+        <div class="step-title">Use the SVG Data URL in CSS</div>
+      </div>
+      <p>
+        Now you can use the SVG Data URL in your CSS as a background image:
+      </p>
+      <div class="code-block">
+        <pre><code>.icon-add {
+  background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%3E%3C%2Fcircle%3E%3Cline%20x1%3D%2212%22%20y1%3D%228%22%20x2%3D%2212%22%20y2%3D%2216%22%3E%3C%2Fline%3E%3Cline%20x1%3D%228%22%20y1%3D%2212%22%20x2%3D%2216%22%20y2%3D%2212%22%3E%3C%2Fline%3E%3C%2Fsvg%3E');
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+}</code></pre>
+      </div>
+      <div class="tutorial-note">
+        <div class="tutorial-note-title">Note</div>
+        <div class="tutorial-note-content">
+          For SVGs, URL encoding is often more efficient than Base64 encoding. However, if your SVG contains special characters or is complex, Base64 encoding might be more reliable.
+        </div>
+      </div>
+    </div>
+
+    <h2>Embedding Fonts with Data URLs</h2>
+    <div class="tutorial-step">
+      <div class="step-header">
+        <div class="step-number">1</div>
+        <div class="step-title">Prepare Your Font File</div>
+      </div>
+      <div class="meta">
+        <span class="difficulty advanced">Advanced</span>
+        <span class="time-estimate">
+          <svg class="time-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          30 minutes
+        </span>
+      </div>
+      <p>
+        Start with a web font file (WOFF2 format is recommended for modern browsers due to its smaller size). For this tutorial, we'll use a small icon font.
+      </p>
+    </div>
+
+    <div class="tutorial-step">
+      <div class="step-header">
+        <div class="step-number">2</div>
+        <div class="step-title">Convert Font to Base64</div>
+      </div>
+      <p>
+        Use our Data URL converter tool or a Base64 encoder to convert your font file to a Base64 string. For fonts, Base64 encoding is typically used:
+      </p>
+      <div class="code-block">
+        <pre><code>// Using FileReader in JavaScript
+function fontToDataURL(fontFile, callback) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    callback(e.target.result);
+  };
+  reader.readAsDataURL(fontFile);
+}</code></pre>
+      </div>
+    </div>
+
+    <div class="tutorial-step">
+      <div class="step-header">
+        <div class="step-number">3</div>
+        <div class="step-title">Use the Font Data URL in CSS</div>
+      </div>
+      <p>
+        Include the Data URL in your CSS @font-face rule:
+      </p>
+      <div class="code-block">
+        <pre><code>@font-face {
+  font-family: 'IconFont';
+  src: url('data:font/woff2;base64,d09GMgABAAAAAAKAAoAAAAAAABsAAAAIwAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAAg') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  font-family: 'IconFont';
+  font-size: 24px;
+}</code></pre>
+      </div>
+      <div class="tutorial-note">
+        <div class="tutorial-note-title">Warning</div>
+        <div class="tutorial-note-content">
+          Embedding fonts as Data URLs is only recommended for small icon fonts or subset fonts. Full font files can be quite large and may negatively impact performance.
+        </div>
+      </div>
+    </div>
+
+    <h2>Creating Efficient CSS Sprites with Data URLs</h2>
+    <div class="tutorial-step">
+      <div class="step-header">
+        <div class="step-number">1</div>
+        <div class="step-title">Prepare Your Sprite Images</div>
+      </div>
+      <div class="meta">
+        <span class="difficulty beginner">Beginner</span>
+        <span class="time-estimate">
+          <svg class="time-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          15 minutes
+        </span>
+      </div>
+      <p>
+        Instead of creating a traditional sprite sheet image, we'll create individual small images and convert each to a Data URL.
+      </p>
+    </div>
+
+    <div class="tutorial-step">
+      <div class="step-header">
+        <div class="step-number">2</div>
+        <div class="step-title">Convert Images to Data URLs</div>
+      </div>
+      <p>
+        Use our Data URL converter tool to convert each small image to a Data URL.
+      </p>
+    </div>
+
+    <div class="tutorial-step">
+      <div class="step-header">
+        <div class="step-number">3</div>
+        <div class="step-title">Create CSS Classes for Each Sprite</div>
+      </div>
+      <p>
+        Create CSS classes for each sprite using the Data URLs:
+      </p>
+      <div class="code-block">
+        <pre><code>.icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon-home {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA...');
+}
+
+.icon-search {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA...');
+}
+
+.icon-settings {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA...');
+}</code></pre>
+      </div>
+      <p>
+        Now you can use these classes in your HTML:
+      </p>
+      <div class="code-block">
+        <pre><code>&lt;span class="icon icon-home"&gt;&lt;/span&gt;
+&lt;span class="icon icon-search"&gt;&lt;/span&gt;
+&lt;span class="icon icon-settings"&gt;&lt;/span&gt;</code></pre>
+      </div>
+      <div class="tutorial-note">
+        <div class="tutorial-note-title">Tip</div>
+        <div class="tutorial-note-content">
+          This approach works best when you have a small number of icons that are used on multiple pages. For a large number of icons, consider using a traditional sprite sheet or an icon font.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>© <span id="current-year"></span> Richard Crane. All rights reserved.</p>
+      <div>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookies.html">Cookie Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("current-year").textContent = new Date().getFullYear() + " ";
+  </script>
+  <script src="scripts.js"></script>
+  <script src="schema.js"></script>
+</body>
+
+</html>

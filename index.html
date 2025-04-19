@@ -2,1083 +2,524 @@
 <html lang="en">
 
 <head>
-  <!-- Content Security Policy for improved security -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://pagead2.googlesyndication.com https://cdnjs.buymeacoffee.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; connect-src 'self'; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; font-src 'self' https://cdnjs.buymeacoffee.com; object-src 'none'; base-uri 'self'; form-action 'self';" />
-  <meta name="google-adsense-account" content="ca-pub-1769530151228137" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1769530151228137"
-    crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Prevent Caching -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  <title>Image to Data URL Converter</title>
+  <title>Image to Data URL Converter - Free Online Tool</title>
   <meta name="description"
-    content="Convert images to Data URL (base64) format online. Free, fast, and privacy-friendly tool to convert PNG, JPEG, GIF, BMP, and WEBP images to base64 Data URL for easy embedding in HTML and CSS. Perfect for web developers and designers." />
-  <meta name="keywords" content="data url, base64, image converter, online tool, web development, html, css, embed images, convert image to data url, image to base64, image to data url converter" />
+    content="Free online tool to convert images to Data URLs (base64) for embedding in HTML, CSS, and JavaScript. Supports PNG, JPEG, GIF, SVG, and more." />
+  <meta name="keywords" content="data url converter, base64 image, image to data uri, base64 encoder, web development tools" />
+  <meta name="author" content="Richard Crane" />
+  <meta name="robots" content="index, follow" />
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://datauri.ai/" />
 
   <!-- Open Graph Metadata -->
-  <meta property="og:title" content="Image to Data URL Converter" />
-  <meta property="og:description" content="Convert images to Data URL (base64) format online. Free, fast, and privacy-friendly tool to convert PNG, JPEG, GIF, BMP, and WEBP images to base64 Data URL for easy embedding in HTML and CSS." />
+  <meta property="og:title" content="Image to Data URL Converter - Free Online Tool" />
+  <meta property="og:description" content="Free online tool to convert images to Data URLs (base64) for embedding in HTML, CSS, and JavaScript. Supports PNG, JPEG, GIF, SVG, and more." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://datauri.ai/" />
   <meta property="og:image" content="https://datauri.ai/icon-192.png" />
+  <meta property="og:site_name" content="DataURI.ai" />
+  <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card Metadata -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Image to Data URL Converter" />
-  <meta name="twitter:description" content="Convert images to Data URL (base64) format online. Free, fast, and privacy-friendly tool to convert PNG, JPEG, GIF, BMP, and WEBP images to base64 Data URL for easy embedding in HTML and CSS." />
+  <meta name="twitter:title" content="Image to Data URL Converter - Free Online Tool" />
+  <meta name="twitter:description" content="Free online tool to convert images to Data URLs (base64) for embedding in HTML, CSS, and JavaScript. Supports PNG, JPEG, GIF, SVG, and more." />
   <meta name="twitter:image" content="https://datauri.ai/icon-192.png" />
+  <meta name="twitter:creator" content="@richcrane" />
+
+  <!-- Favicon and App Icons -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#8b5cf6" />
   <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="code-copy.css" />
 
   <style>
-    /* Tool description styles */
-    .tool-description {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      color: #6b7280;
-      font-size: 1.125rem;
-    }
-    .how-to-section {
-      margin: 1.5rem 0;
-      color: #4b5563;
-      font-size: 1rem;
-      background: #f5f3ff;
-      border-radius: 0.5rem;
-      padding: 1rem 1.5rem;
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .how-to-section ol {
-      margin: 0;
-      padding-left: 1.25rem;
-    }
-    .upload-hint {
-      display: block;
-      text-align: center;
-      color: #6b7280;
-      font-size: 0.97rem;
-      margin-bottom: 1.25rem;
-    }
-    .what-is-data-url-link {
-      display: inline-block;
-      margin: 0.5rem auto 1rem auto;
-      color: #8b5cf6;
-      text-decoration: underline;
-      cursor: pointer;
-      font-size: 0.97rem;
-    }
-    .what-is-data-url-link:hover {
-      color: #4f46e5;
-    }
-    .step-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: #8b5cf6;
-      color: #fff;
-      border-radius: 50%;
-      width: 1.5em;
-      height: 1.5em;
-      font-size: 0.9em;
-      margin-right: 0.5em;
-      font-weight: 600;
-      vertical-align: middle;
-    }
-    .inline-hint {
-      display: block;
-      text-align: center;
-      color: #6b7280;
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-    .example-usage {
-      margin-top: 1rem;
-      color: #6b7280;
-      font-size: 0.95rem;
-      background: #f3f4f6;
-      border-radius: 0.25rem;
-      padding: 0.75rem 1rem;
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .example-usage pre {
-      background: #fff;
-      padding: 0.5rem;
-      border-radius: 0.25rem;
-      overflow-x: auto;
-      margin: 0.5rem 0 0 0;
-    }
-    .tool-why {
-      display: block;
-      margin-top: 0.25rem;
-      color: #4b5563;
-      font-size: 1rem;
-      font-style: italic;
-    }
-    /* Learning section styles */
-    .learning-section {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-    .learning-row {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-    .learning-label {
-      font-weight: 500;
-      color: #4b5563;
-      margin-right: 0.5rem;
-      font-size: 1.25rem;
-      white-space: nowrap;
-    }
-    .learning-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      margin: 0 0.5rem;
-      text-decoration: none;
-    }
-    .learning-icon {
-      vertical-align: middle;
-    }
-    .learning-desc-mdn {
-      font-size: 1rem;
-      color: #6366f1;
-    }
-    .learning-desc-wiki {
-      font-size: 1rem;
-      color: #222;
-    }
-
-    /* Base styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    }
-
-    body {
-      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-      min-height: 100vh;
+    .upload-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 800px;
-      background-color: white;
-      border-radius: 0.75rem;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
       padding: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    h1 {
-      font-size: 1.875rem;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 2rem;
-      color: #111827;
-    }
-
-    /* Upload area */
-    .upload-area {
       border: 2px dashed #d1d5db;
       border-radius: 0.5rem;
-      padding: 2rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      background-color: #f9fafb;
+      transition: all 0.2s ease;
     }
 
-    .upload-area:hover,
-    .upload-area.active {
+    .upload-container:hover {
       border-color: #8b5cf6;
-      background-color: rgba(139, 92, 246, 0.05);
+      background-color: #f3f4f6;
     }
 
     .upload-icon {
       width: 4rem;
       height: 4rem;
+      color: #8b5cf6;
       margin-bottom: 1rem;
-      color: #9ca3af;
     }
 
     .upload-text {
-      font-size: 1.125rem;
+      font-size: 1.25rem;
+      font-weight: 500;
       color: #4b5563;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
     }
 
     .upload-subtext {
       font-size: 0.875rem;
       color: #6b7280;
-    }
-
-    /* Image preview */
-    .image-preview {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       margin-bottom: 1.5rem;
-    }
-
-    .preview-container {
-      border: 1px solid #e5e7eb;
-      border-radius: 0.5rem;
-      padding: 0.5rem;
-      margin-bottom: 0.75rem;
-      width: 100%;
-      max-width: 32rem;
-    }
-
-    .preview-image {
-      max-height: 16rem;
-      max-width: 100%;
-      object-fit: contain;
-      margin: 0 auto;
-      display: block;
-    }
-
-    .file-info {
-      text-align: center;
-      color: #4b5563;
-    }
-
-    .file-name {
-      font-size: 1.125rem;
-    }
-
-    .file-size {
-      font-size: 0.875rem;
-    }
-
-    /* Buttons */
-    .button-container {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    /* Action buttons container */
-    .action-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .button {
-      padding: 0.5rem 1.5rem;
-      border-radius: 0.375rem;
-      font-weight: 500;
-      font-size: 0.875rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-    }
-
-    .button:disabled {
-      background-color: #9ca3af;
-      cursor: not-allowed;
-    }
-
-    .button-primary {
-      background-color: white;
-      color: #8b5cf6;
-      border: 1px solid #8b5cf6;
-    }
-
-    .button-primary:hover:not(:disabled) {
-      background-color: #f5f3ff;
-    }
-
-    .button-secondary {
-      background-color: #4b5563;
-      color: white;
-      border: none;
-    }
-
-    .button-tertiary {
-      background-color: #4f46e5;
-      color: white;
-      border: none;
-    }
-
-    .button-tertiary:hover:not(:disabled) {
-      background-color: #4338ca;
-    }
-
-    .button-icon {
-      width: 1.25rem;
-      height: 1.25rem;
-      margin-right: 0.5rem;
-    }
-
-    /* Data URI display */
-    .data-uri-container {
-      margin-top: 1.5rem;
-    }
-
-    .data-uri-title {
-      font-size: 1.125rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      color: #111827;
-    }
-
-    .data-uri-wrapper {
-      position: relative;
-    }
-
-    .data-uri-textarea {
-      width: 100%;
-      height: 8rem;
-      padding: 0.75rem;
-      background-color: #f9fafb;
-      border: 1px solid #d1d5db;
-      border-radius: 0.375rem;
-      font-size: 0.875rem;
-      color: #1f2937;
-      font-family: monospace;
-      resize: none;
-    }
-
-    .copy-button {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      background-color: #e5e7eb;
-      color: #4b5563;
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.25rem;
-      font-size: 0.75rem;
-      cursor: pointer;
-      border: none;
-    }
-
-    .copy-button:hover {
-      background-color: #d1d5db;
-    }
-
-    .data-uri-help {
-      margin-top: 0.5rem;
-      font-size: 0.75rem;
-      color: #6b7280;
-    }
-
-    /* Reset link */
-    .reset-link {
-      display: block;
-      text-align: center;
-      color: #8b5cf6;
-      text-decoration: underline;
-      margin-top: 1rem;
-      cursor: pointer;
-    }
-
-    .reset-link:hover {
-      color: #7c3aed;
-    }
-
-    /* Ad containers */
-    .ad-container {
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 0.375rem;
-      border: 1px dashed #d1d5db;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #9ca3af;
-      font-size: 0.875rem;
-      margin-bottom: 1rem;
       text-align: center;
     }
 
-    .ad-top,
-    .ad-bottom {
-      width: 100%;
-      max-width: 800px;
-      height: 90px;
-    }
-
-    .ad-left,
-    .ad-right {
+    .file-input {
       display: none;
     }
 
-    /* Footer */
-    .footer {
+    .upload-button {
+      background-color: #8b5cf6;
       color: white;
-      text-align: center;
-      font-size: 0.875rem;
-      padding: 0.5rem;
-      margin-top: 0.2rem;
-    }
-    
-    .footer-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.25rem;
-    }
-    
-    .footer p {
-      margin: 0;
-      display: flex;
-      align-items: center;
-      height: 100%;
-    }
-    
-    .bmc-container {
-      margin-top: 0.5rem;
-      transform: scale(0.92);
-      transform-origin: center center;
-    }
-    
-    /* Additional styling for Buy Me a Coffee button */
-    .bmc-btn {
-      transform: scale(0.92) !important;
-      height: auto !important;
-    }
-    
-    @media (min-width: 768px) {
-      .footer-content {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-      }
-      
-      .bmc-container {
-        margin-top: 0;
-      }
-    }
-
-    /* Responsive */
-    @media (min-width: 1024px) {
-      .layout {
-        display: flex;
-        gap: 1rem;
-      }
-
-      .ad-left,
-      .ad-right {
-        display: block;
-        width: 160px;
-        height: 600px;
-      }
-
-      .main-content {
-        flex: 1;
-      }
-    }
-
-    /* Hide share button on mobile */
-    @media (max-width: 768px) {
-      .share-button-mobile-hidden {
-        display: none !important;
-      }
-    }
-
-    /* Fixed action buttons */
-    .fixed-action-buttons {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      z-index: 100;
-    }
-
-    .icon-button {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-      background-color: #4f46e5;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-weight: 500;
+      padding: 0.625rem 1.25rem;
+      border-radius: 0.375rem;
       border: none;
+      cursor: pointer;
       transition: all 0.2s ease;
     }
 
-    .icon-button:hover {
-      background-color: #4338ca;
+    .upload-button:hover {
+      background-color: #7c3aed;
+    }
+
+    .result-container {
+      display: none;
+      margin-top: 2rem;
+    }
+
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .result-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    .copy-button {
+      background-color: #8b5cf6;
+      color: white;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .copy-button:hover {
+      background-color: #7c3aed;
+    }
+
+    .result-preview {
+      display: flex;
+      margin-bottom: 1.5rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+
+    .preview-image {
+      max-width: 100%;
+      max-height: 300px;
+      margin: 0 auto;
+      display: block;
+      padding: 1rem;
+    }
+
+    .result-code {
+      background-color: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+    }
+
+    .result-code textarea {
+      width: 100%;
+      min-height: 100px;
+      resize: vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: #1f2937;
+      background-color: #f9fafb;
+      border: none;
+      padding: 0;
+      margin: 0;
+      overflow-wrap: break-word;
+    }
+
+    .result-code textarea:focus {
+      outline: none;
+    }
+
+    .usage-examples {
+      margin-top: 3rem;
+    }
+
+    .example {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .example:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .example-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 1rem;
+    }
+
+    .example-description {
+      margin-bottom: 1rem;
+    }
+
+    .resources {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .resource-card {
+      flex: 1;
+      min-width: 250px;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      background-color: #f9fafb;
+      transition: all 0.2s ease;
+    }
+
+    .resource-card:hover {
+      border-color: #8b5cf6;
       transform: translateY(-2px);
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
 
-    .icon-button svg {
-      width: 1.5rem;
-      height: 1.5rem;
+    .resource-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
     }
 
-    /* Spinner */
-    .spinner {
-      display: inline-block;
+    .resource-description {
+      font-size: 0.875rem;
+      color: #4b5563;
+      margin-bottom: 1rem;
+    }
+
+    .resource-link {
+      display: inline-flex;
+      align-items: center;
+      color: #8b5cf6;
+      font-weight: 500;
+      font-size: 0.875rem;
+      text-decoration: none;
+    }
+
+    .resource-link:hover {
+      text-decoration: underline;
+    }
+
+    .resource-link-icon {
       width: 1rem;
       height: 1rem;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      border-top-color: white;
-      animation: spin 1s ease-in-out infinite;
-      margin-right: 0.5rem;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+      margin-left: 0.25rem;
     }
   </style>
 </head>
 
 <body>
-
   <!-- Top ad -->
-  <div class="ad-container ad-top">
+  <div class="ad-container">
     <div>Ad Space</div>
     <!-- Google AdSense code will be inserted here -->
   </div>
 
+  <!-- Navigation -->
+  <div class="nav-container">
+    <nav class="nav">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="about-data-urls.html" class="nav-link">About Data URLs</a>
+      <a href="tutorials.html" class="nav-link">Tutorials</a>
+      <a href="use-cases.html" class="nav-link">Use Cases</a>
+      <a href="best-practices.html" class="nav-link">Best Practices</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+  </div>
+
   <div class="container">
-    <div class="title-row">
-      <h1 style="margin: 0; padding: 0; line-height: 1; display: flex; align-items: center;">Image to Data URL Converter</h1>
-      <a href="https://github.com/ChiefInnovator/image-to-data-uri-converter" target="_blank" rel="noopener" class="github-btn">
-        <svg height="22" width="22" viewBox="0 0 16 16" fill="currentColor" style="display: inline-block; margin-right: 0.5em; vertical-align: middle;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-        <span style="display: inline-block; font-weight: 600; color: #24292f; vertical-align: middle; line-height: 1;">GitHub</span>
-      </a>
-    </div>
-    <style>
-      .title-row {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1.2em;
-        margin-bottom: 0.5em;
-        margin-top: 0.5em;
-      }
-      @media (max-width: 600px) {
-        .title-row {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.5em;
-        }
-      }
-      .github-btn {
-        display: inline-flex;
-        align-items: center;
-        background: #f5f3ff;
-        border: 1px solid #8b5cf6;
-        color: #8b5cf6;
-        border-radius: 6px;
-        padding: 0.4em 1em;
-        font-size: 1.05em;
-        text-decoration: none;
-        transition: background 0.2s, color 0.2s, border 0.2s;
-        box-shadow: 0 1px 4px rgba(139, 92, 246, 0.07);
-      }
-      .github-btn:hover {
-        background: #8b5cf6;
-        color: #fff;
-        border-color: #8b5cf6;
-      }
-      .github-btn:hover span {
-        color: #fff;
-      }
-    </style>
-    <p class="tool-description">
-      Effortlessly convert images to Data URLs for seamless embedding in web pages and applications. Instantly integrate images into HTML or CSS without relying on external files.
+    <h1>Image to Data URL Converter</h1>
+    
+    <p>
+      Convert your images to Data URLs (base64 encoded) for embedding directly in your HTML, CSS, or JavaScript code.
+      This eliminates HTTP requests for small images, improving page load performance.
     </p>
-    <div class="learning-section">
-      <div class="learning-row">
-        <span class="learning-label">What is a Data URL?</span>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data" target="_blank" rel="noopener" title="MDN: Data URLs - Official documentation on Data URLs, syntax, and usage." class="learning-link">
-          <!-- Book icon SVG -->
-          <svg width="24" height="24" fill="none" stroke="#6366f1" stroke-width="2" viewBox="0 0 24 24" class="learning-icon">
-            <rect x="4" y="4" width="16" height="16" rx="2" fill="#fff" stroke="#6366f1"/>
-            <path d="M8 4v16" stroke="#6366f1" stroke-width="2"/>
-          </svg>
-          <span class="learning-desc-mdn">MDN Web Docs</span>
-        </a>
-        <a href="https://en.wikipedia.org/wiki/Data_URI_scheme" target="_blank" rel="noopener" title="Wikipedia: Data URI scheme - General background information." class="learning-link">
-          <!-- Wikipedia W icon SVG -->
-          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" class="learning-icon">
-            <text x="3" y="18" font-family="serif" font-size="18" fill="#222">W</text>
-          </svg>
-          <span class="learning-desc-wiki">Wikipedia</span>
-        </a>
-        <a href="https://www.youtube.com/results?search_query=data+urls" target="_blank" rel="noopener" title="YouTube: Data URLs - Video tutorials and explanations." class="learning-link">
-          <!-- YouTube icon SVG -->
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="learning-icon">
-            <rect x="2" y="5" width="20" height="14" rx="4" fill="#FF0000"/>
-            <polygon points="10,9 16,12 10,15" fill="#fff"/>
-          </svg>
-          <span class="learning-desc-yt" style="font-size:1rem;color:#FF0000;">YouTube</span>
-        </a>
+
+    <div class="upload-container" id="upload-container">
+      <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+      </svg>
+      <div class="upload-text">Drag and drop your image here</div>
+      <div class="upload-subtext">or click to browse (PNG, JPEG, GIF, SVG, WebP, etc.)</div>
+      <input type="file" id="file-input" class="file-input" accept="image/*" />
+      <button class="upload-button" id="upload-button">Select Image</button>
+    </div>
+
+    <div class="result-container" id="result-container">
+      <div class="result-header">
+        <div class="result-title">Your Data URL</div>
+        <button class="copy-button" id="copy-button">Copy Data URL</button>
+      </div>
+      <div class="result-preview">
+        <img id="preview-image" class="preview-image" src="" alt="Preview" />
+      </div>
+      <div class="result-code code-block">
+        <textarea id="result-code" readonly></textarea>
+      </div>
+      <button class="upload-button" id="convert-another-button">Convert Another Image</button>
+    </div>
+
+    <div class="usage-examples">
+      <h2>How to Use Data URLs</h2>
+
+      <div class="example">
+        <h3 class="example-title">HTML Example</h3>
+        <p class="example-description">
+          Embed images directly in your HTML using the img tag:
+        </p>
+        <div class="code-block">
+          <pre><code>&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA
+AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot"&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="example">
+        <h3 class="example-title">CSS Example</h3>
+        <p class="example-description">
+          Use Data URLs as background images in your CSS:
+        </p>
+        <div class="code-block">
+          <pre><code>.element {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA
+AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+9TXL0Y4OHwAAAABJRU5ErkJggg==');
+  background-repeat: no-repeat;
+  background-position: center;
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="example">
+        <h3 class="example-title">JavaScript Example</h3>
+        <p class="example-description">
+          Create images dynamically in JavaScript:
+        </p>
+        <div class="code-block">
+          <pre><code>const img = new Image();
+img.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA
+AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+9TXL0Y4OHwAAAABJRU5ErkJggg==';
+document.body.appendChild(img);</code></pre>
+        </div>
       </div>
     </div>
 
-    <div class="layout">
-      <div class="main-content">
-        <div id="app">
-          <!-- Content will be dynamically inserted here -->
+    <div class="tip">
+      <div class="tip-title">Best Practice</div>
+      <div class="tip-content">
+        Data URLs are best suited for small images (under 5KB). For larger images, traditional file references with proper caching are usually more efficient.
+      </div>
+    </div>
+
+    <div class="resources">
+      <div class="resource-card">
+        <div class="resource-title">Learn More About Data URLs</div>
+        <div class="resource-description">
+          Understand what Data URLs are, how they work, and their benefits and limitations.
         </div>
-        <span class="upload-hint">Supports PNG, JPEG, GIF, BMP, WEBP. Max file size: 20MB.</span>
-        <div class="how-to-section">
-          <strong>How to use:</strong>
-          <ol>
-            <li><b>Upload an image</b> by dragging it here or clicking the upload area.</li>
-            <li><b>Preview your image</b> to confirm it's correct.</li>
-            <li>Click <b><span class="step-badge">1</span>Convert</b> to generate the Data URL.</li>
-            <li>Click <b><span class="step-badge">2</span>Copy URL</b> to copy the Data URL to your clipboard.</li>
-            <li>Paste the Data URL into your HTML or CSS where you want the image to appear.</li>
-          </ol>
+        <a href="about-data-urls.html" class="resource-link">
+          Read the Guide
+          <svg class="resource-link-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      <div class="resource-card">
+        <div class="resource-title">Step-by-Step Tutorials</div>
+        <div class="resource-description">
+          Follow our detailed tutorials to learn how to use Data URLs effectively in your projects.
         </div>
+        <a href="tutorials.html" class="resource-link">
+          View Tutorials
+          <svg class="resource-link-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      <div class="resource-card">
+        <div class="resource-title">Practical Use Cases</div>
+        <div class="resource-description">
+          Discover real-world applications and scenarios where Data URLs shine.
+        </div>
+        <a href="use-cases.html" class="resource-link">
+          Explore Use Cases
+          <svg class="resource-link-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
       </div>
     </div>
   </div>
 
   <footer class="footer">
     <div class="footer-content">
-      <p>
-        © <span id="current-year"></span>&nbsp;Richard Crane. All rights reserved.
-      </p>
-      <div class="bmc-container">
-        <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="richcrane" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
+      <p>© <span id="current-year"></span> Richard Crane. All rights reserved.</p>
+      <div>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookies.html">Cookie Support</a>
       </div>
     </div>
   </footer>
 
-  <!-- Fixed action buttons -->
-  <div class="fixed-action-buttons">
-    <button id="add-to-home-button" class="icon-button" title="Add to Home Screen">
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-      </svg>
-    </button>
-    <button id="share-button" class="icon-button" title="Share">
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z">
-        </path>
-      </svg>
-    </button>
-  </div>
-
   <script>
-    // Register service worker for PWA
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker
-          .register("/service-worker.js")
-          .then((registration) => {
-            console.log(
-              "Service Worker registered with scope:",
-              registration.scope
-            );
-          })
-          .catch((error) => {
-            console.error("Service Worker registration failed:", error);
-          });
-      });
-    }
-
     // Set current year in footer
-    document.getElementById("current-year").textContent =
-      new Date().getFullYear();
+    document.getElementById("current-year").textContent = new Date().getFullYear() + " ";
 
-    // Add event listeners for fixed action buttons
-    document
-      .getElementById("add-to-home-button")
-      .addEventListener("click", () => {
-        app.addToHomeScreen();
-      });
+    // File upload handling
+    const uploadContainer = document.getElementById("upload-container");
+    const fileInput = document.getElementById("file-input");
+    const uploadButton = document.getElementById("upload-button");
+    const resultContainer = document.getElementById("result-container");
+    const previewImage = document.getElementById("preview-image");
+    const resultCode = document.getElementById("result-code");
+    const copyButton = document.getElementById("copy-button");
+    const convertAnotherButton = document.getElementById("convert-another-button");
 
-    document.getElementById("share-button").addEventListener("click", () => {
-      app.shareImage();
+    // Handle file selection via button
+    uploadButton.addEventListener("click", () => {
+      fileInput.click();
     });
 
-    // Main application
-    const app = {
-      // State
-      file: null,
-      preview: null,
-      fileName: "",
-      fileSize: "",
-      dataURI: null,
-      isConverting: false,
-      isDragging: false,
+    // Handle file selection
+    fileInput.addEventListener("change", handleFileSelect);
 
-      // Initialize
-      init() {
-        this.renderUploadArea();
-      },
+    // Handle drag and drop
+    uploadContainer.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      uploadContainer.style.borderColor = "#8b5cf6";
+      uploadContainer.style.backgroundColor = "#f3f4f6";
+    });
 
-      // Render upload area
-      renderUploadArea() {
-        const uploadArea = document.createElement("div");
-        uploadArea.className = `upload-area ${this.isDragging ? "active" : ""
-          }`;
-        uploadArea.innerHTML = `
-          <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-          </svg>
-          <p class="upload-text">Click to upload or drag and drop</p>
-          <p class="upload-subtext">Supported formats: PNG, JPEG, GIF, BMP, WEBP</p>
-          <input type="file" id="file-input" accept="image/*" style="display: none;">
-        `;
+    uploadContainer.addEventListener("dragleave", (e) => {
+      e.preventDefault();
+      uploadContainer.style.borderColor = "#d1d5db";
+      uploadContainer.style.backgroundColor = "#f9fafb";
+    });
 
-        uploadArea.addEventListener("click", () => {
-          document.getElementById("file-input").click();
-        });
-
-        uploadArea.addEventListener("dragenter", (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          this.isDragging = true;
-          this.renderUploadArea();
-        });
-
-        uploadArea.addEventListener("dragleave", (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          this.isDragging = false;
-          this.renderUploadArea();
-        });
-
-        uploadArea.addEventListener("dragover", (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          this.isDragging = true;
-        });
-
-        uploadArea.addEventListener("drop", (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          this.isDragging = false;
-
-          if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-            this.validateAndProcessFile(e.dataTransfer.files[0]);
-          }
-        });
-
-        const appElement = document.getElementById("app");
-        appElement.innerHTML = "";
-        appElement.appendChild(uploadArea);
-
-        document
-          .getElementById("file-input")
-          .addEventListener("change", (e) => {
-            if (e.target.files && e.target.files[0]) {
-              this.validateAndProcessFile(e.target.files[0]);
-            }
-          });
-      },
-
-      // Validate and process file
-      validateAndProcessFile(file) {
-        // Check if file is an image
-        if (!file.type.match("image.*")) {
-          alert("Please select an image file (PNG, JPG, GIF, etc.)");
-          return;
-        }
-
-        // Check file size (max 20MB)
-        if (file.size > 20 * 1024 * 1024) {
-          alert("File size exceeds 20MB limit");
-          return;
-        }
-
-        this.file = file;
-        this.fileName = file.name;
-        this.fileSize = (file.size / (1024 * 1024)).toFixed(2) + " MB";
-
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          this.preview = e.target.result;
-          this.renderImagePreview();
-        };
-        reader.readAsDataURL(file);
-      },
-
-      // Render image preview
-      renderImagePreview() {
-        const appElement = document.getElementById("app");
-        appElement.innerHTML = `
-          <div class="image-preview">
-            <div class="preview-container" id="preview-container" style="cursor: pointer;" title="Click to upload a different image">
-              <img src="${this.preview}" alt="Preview" class="preview-image">
-            </div>
-            <div class="file-info">
-              <p class="file-name">${this.fileName}</p>
-              <p class="file-size">${this.fileSize}</p>
-            </div>
-          </div>
-          
-          <div class="button-container">
-            <button id="convert-button" class="button button-primary" ${this.isConverting || this.dataURI ? "disabled" : ""
-          }>
-              ${this.isConverting
-            ? '<span class="spinner"></span>Converting...'
-            : "Convert"
-          }
-            </button>
-            
-            <button id="copy-button" class="button button-secondary" ${!this.dataURI ? "disabled" : ""
-          }>
-              <svg class="button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
-              </svg>
-              Copy URI
-            </button>
-          </div>
-          
-          ${this.dataURI
-            ? `
-            <div class="data-uri-container">
-              <h3 class="data-uri-title">Data URI</h3>
-              <div class="data-uri-wrapper">
-                <textarea id="data-uri-textarea" class="data-uri-textarea" readonly>${this.dataURI}</textarea>
-                <button id="copy-inline-button" class="copy-button">Copy</button>
-              </div>
-              <p class="data-uri-help">
-                This Data URI can be used directly in HTML img tags or CSS background-image properties.
-              </p>
-            </div>
-          `
-            : ""
-          }
-          
-          <a id="reset-link" class="reset-link">Upload a different image</a>
-          
-          <div class="action-buttons">
-            <!-- Removed the buttons from here as they are now fixed at the bottom right -->
-          </div>
-        `;
-
-        // Add event listeners
-        document
-          .getElementById("convert-button")
-          .addEventListener("click", () => {
-            this.convertToDataURI();
-          });
-
-        document
-          .getElementById("copy-button")
-          .addEventListener("click", () => {
-            this.copyToClipboard();
-          });
-
-        document
-          .getElementById("reset-link")
-          .addEventListener("click", () => {
-            this.reset();
-          });
-
-        // Add click event to the image container to reset and upload a new image
-        document
-          .getElementById("preview-container")
-          .addEventListener("click", () => {
-            document.getElementById("file-input").click();
-          });
-
-        if (this.dataURI) {
-          document
-            .getElementById("copy-inline-button")
-            .addEventListener("click", () => {
-              this.copyToClipboard();
-            });
-        }
-      },
-
-      // Convert to Data URI
-      convertToDataURI() {
-        if (!this.file || this.isConverting || this.dataURI) return;
-
-        this.isConverting = true;
-        this.renderImagePreview();
-
-        // Simulate processing time
-        setTimeout(() => {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            this.dataURI = e.target.result;
-            this.isConverting = false;
-            this.renderImagePreview();
-          };
-          reader.readAsDataURL(this.file);
-        }, 500);
-      },
-
-      // Copy to clipboard
-      copyToClipboard() {
-        if (!this.dataURI) return;
-
-        navigator.clipboard
-          .writeText(this.dataURI)
-          .then(() => {
-            const copyButton = document.getElementById("copy-button");
-            const originalText = copyButton.innerHTML;
-
-            copyButton.innerHTML = `
-              <svg class="button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              Copied!
-            `;
-
-            setTimeout(() => {
-              copyButton.innerHTML = originalText;
-            }, 2000);
-
-            // Also update inline copy button if it exists
-            const inlineCopyButton =
-              document.getElementById("copy-inline-button");
-            if (inlineCopyButton) {
-              const originalInlineText = inlineCopyButton.textContent;
-              inlineCopyButton.textContent = "Copied!";
-
-              setTimeout(() => {
-                inlineCopyButton.textContent = originalInlineText;
-              }, 2000);
-            }
-          })
-          .catch((err) => {
-            console.error("Failed to copy: ", err);
-            alert("Failed to copy to clipboard");
-          });
-      },
-
-      // Add to Home Screen
-      addToHomeScreen() {
-        // Check if the app is already installed
-        if (window.matchMedia("(display-mode: standalone)").matches) {
-          alert("This app is already installed on your device!");
-          return;
-        }
-
-        // Show installation instructions based on browser/platform
-        let message = "To add this app to your home screen:\n\n";
-
-        if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
-          message +=
-            "1. Tap the share icon (📤) at the bottom of the screen\n";
-          message += '2. Scroll down and tap "Add to Home Screen"\n';
-          message += '3. Tap "Add" in the top-right corner';
-        } else if (/Android/.test(navigator.userAgent)) {
-          message += "1. Tap the menu icon (⋮) in the top-right corner\n";
-          message += '2. Tap "Add to Home screen"';
-        } else {
-          message += "1. Click the install icon (🔽) in the address bar\n";
-          message += '2. Click "Install"';
-        }
-
-        alert(message);
-      },
-
-      // Share image or Data URI
-      shareImage() {
-        if (!navigator.share) {
-          alert(
-            "Web Share API is not supported in your browser. Please copy the link manually."
-          );
-          return;
-        }
-
-        let shareData = {
-          title: "Image to Data URI Converter",
-          text: "Convert your images to Data URIs easily!",
-          url: window.location.href,
-        };
-
-        // If we have a data URI, share that instead
-        if (this.dataURI) {
-          shareData.text = "Check out this Data URI I generated!";
-        }
-
-        navigator
-          .share(shareData)
-          .then(() => console.log("Shared successfully"))
-          .catch((error) => console.error("Error sharing:", error));
-      },
-
-      // Reset
-      reset() {
-        this.file = null;
-        this.preview = null;
-        this.fileName = "";
-        this.fileSize = "";
-        this.dataURI = null;
-        this.isConverting = false;
-        this.isDragging = false;
-
-        this.renderUploadArea();
-      },
-    };
-
-    // Initialize app
-    document.addEventListener("DOMContentLoaded", () => {
-      app.init();
-
-      // Function to check if device is mobile and hide share button
-      function checkMobileAndHideShareButton() {
-        const isMobile =
-          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-            navigator.userAgent
-          ) || window.innerWidth <= 768;
-        const shareButton = document.getElementById("share-button");
-        if (isMobile && shareButton) {
-          shareButton.classList.add("share-button-mobile-hidden");
-        } else if (shareButton) {
-          shareButton.classList.remove("share-button-mobile-hidden");
-        }
+    uploadContainer.addEventListener("drop", (e) => {
+      e.preventDefault();
+      uploadContainer.style.borderColor = "#d1d5db";
+      uploadContainer.style.backgroundColor = "#f9fafb";
+      
+      if (e.dataTransfer.files.length) {
+        handleFiles(e.dataTransfer.files);
       }
-
-      // Check on page load
-      checkMobileAndHideShareButton();
-
-      // Also check when window is resized
-      window.addEventListener("resize", checkMobileAndHideShareButton);
     });
 
-    // Google AdSense integration
-    function loadGoogleAds() {
-      // This function would be used to load Google AdSense when publisher ID is available
-      // Replace placeholder with actual AdSense code
-      // Example:
-      // (adsbygoogle = window.adsbygoogle || []).push({});
+    // Handle file processing
+    function handleFileSelect(e) {
+      if (e.target.files.length) {
+        handleFiles(e.target.files);
+      }
     }
+
+    function handleFiles(files) {
+      const file = files[0];
+      
+      if (!file.type.match('image.*')) {
+        alert('Please select an image file.');
+        return;
+      }
+      
+      const reader = new FileReader();
+      
+      reader.onload = function(e) {
+        const dataUrl = e.target.result;
+        
+        // Display the result
+        previewImage.src = dataUrl;
+        resultCode.value = dataUrl;
+        
+        // Show result container, hide upload container
+        uploadContainer.style.display = "none";
+        resultContainer.style.display = "block";
+      };
+      
+      reader.readAsDataURL(file);
+    }
+
+    // Copy button functionality
+    copyButton.addEventListener("click", () => {
+      const textToCopy = resultCode.value;
+      
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        copyButton.textContent = "Copied!";
+        
+        setTimeout(() => {
+          copyButton.textContent = "Copy Data URL";
+        }, 2000);
+      }).catch(err => {
+        console.error('Could not copy text: ', err);
+      });
+    });
+
+    // Convert another button
+    convertAnotherButton.addEventListener("click", () => {
+      resultContainer.style.display = "none";
+      uploadContainer.style.display = "flex";
+      fileInput.value = "";
+    });
   </script>
+  <script src="scripts.js"></script>
+  <script src="schema.js"></script>
 </body>
 
 </html>
