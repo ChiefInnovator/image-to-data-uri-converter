@@ -20,7 +20,7 @@ function addSchemaMarkup() {
     "founder": {
       "@type": "Person",
       "name": "Richard Crane",
-      "jobTitle": "Founder/CTO of MILL5",
+      "jobTitle": "Founder/CAIO of MILL5",
       "url": `${baseUrl}/about.html`
     }
   };
@@ -256,7 +256,7 @@ function addSchemaMarkup() {
       "author": {
         "@type": "Person",
         "name": "Richard Crane",
-        "jobTitle": "Founder/CTO of MILL5",
+        "jobTitle": "Founder/CAIO of MILL5",
         "url": `${baseUrl}/about.html`,
         "image": `${baseUrl}/richcrane.jpg`
       },
