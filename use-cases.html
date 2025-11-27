@@ -38,6 +38,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
 
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1769530151228137"
+    crossorigin="anonymous"></script>
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="code-copy.css" />
@@ -316,7 +320,7 @@ self.addEventListener('install', function(event) {
 
   <footer class="footer">
     <div class="footer-content">
-      <p>© <span id="current-year"></span> Richard Crane. All rights reserved.</p>
+      <p>© <span id="current-year"></span>&nbsp;Richard Crane. All rights reserved.</p>
       <div>
         <a href="terms.html">Terms & Conditions</a>
         <a href="privacy.html">Privacy Policy</a>
@@ -327,7 +331,7 @@ self.addEventListener('install', function(event) {
 
   <script>
     // Set current year in footer
-    document.getElementById("current-year").textContent = new Date().getFullYear() + " ";
+    document.getElementById("current-year").textContent = new Date().getFullYear();
   </script>
   <script src="scripts.js"></script>
   <script src="schema.js"></script>
