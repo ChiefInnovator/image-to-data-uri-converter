@@ -1,73 +1,66 @@
-# Image to Data URL Converter
+# **Image to Data URL Converter**
 
-<a href="https://github.com/ChiefInnovator/image-to-data-uri-converter/stargazers">
-  <img
-    src="https://img.shields.io/github/stars/ChiefInnovator/image-to-data-uri-converter?style=social"
-    alt="GitHub stars"
-  />
-</a>
-<a href="https://azure.microsoft.com/en-us/products/app-service/static" target="_blank">
-  <img src="https://img.shields.io/badge/Deployed%20on-Azure%20Static%20Web%20Apps-0078D4?logo=azure" alt="Azure Static Web Apps Badge" />
-</a>
-
-> **This application is deployed live on Azure using Azure Static Web Apps.**
-
-A simple, elegant web application that converts images to Data URLs for use in web development.
+*✨ Convert images to Data URLs effortlessly!* 🌐
 
 ---
 
-**Repository:** [https://github.com/ChiefInnovator/image-to-data-uri-converter](https://github.com/ChiefInnovator/image-to-data-uri-converter)
+## 🚀 Live Demo
+
+Try our application live at [DataURI.ai](https://datauri.ai) or visit our GitHub Pages site at [ChiefInnovator.github.io/image-to-data-uri-converter](https://chiefinnovator.github.io/image-to-data-uri-converter/).
 
 ---
 
-## Features
+## ✨ Features
 
-- Drag and drop file upload
-- Support for PNG, JPEG, GIF, BMP, WEBP formats
-- File size validation (max 20MB)
-- Image preview with click-to-upload functionality
-- Data URL conversion with copy to clipboard
-- Mobile-responsive design
-- "Add to Home Screen" functionality for PWA installation
-- Share button (visible on desktop only)
+- **Drag and Drop Upload:** Easily upload images by dragging them into the upload area.
+- **Multiple Formats Supported:** Convert PNG, JPEG, GIF, BMP, and WEBP images.
+- **File Size Validation:** Ensure images are under 20MB for optimal performance.
+- **Image Preview:** Click to upload and see previews of your images before conversion.
+- **Quick Data URL Conversion:** Generate Data URLs with a single click and copy them to your clipboard.
+- **Mobile-Responsive Design:** Enjoy a seamless experience on any device, whether mobile or desktop.
+- **PWA Capabilities:** Add to Home Screen functionality for quick access.
+- **Share Button:** Easily share your Data URLs (desktop only).
 
-## How to Use Locally
+---
 
-1. Download and extract all files to a directory on your computer
-2. Open the `index.html` file in a web browser
-3. Drag and drop an image onto the upload area or click to select a file
-4. Click the "Convert" button to generate the Data URL
-5. Use the "Copy URI" button to copy the Data URL to your clipboard
+## 🚀 Quick Start
 
-## Mobile vs Desktop Experience
+### How to Use Locally
 
-- On mobile devices, the share button is automatically hidden as mobile devices have native sharing capabilities
-- On desktop devices, both the "Add to Home Screen" and "Share" buttons are visible
-- The application is fully responsive and works on all screen sizes
+1. Download and extract the files to your preferred directory.
+2. Open the `index.html` file in your web browser.
+3. Drag and drop an image into the designated area or click to select a file.
+4. Press the "Convert" button to generate the Data URL.
+5. Use the "Copy URI" button to copy the Data URL to your clipboard.
 
-## Deployment
+### Mobile vs Desktop Experience
 
-**Primary Deployment:**
+- On mobile devices, the share button is hidden, taking advantage of native sharing features.
+- On desktop, both "Add to Home Screen" and "Share" buttons are available to enhance usability.
 
-This application is live and hosted on **Azure Static Web Apps**, which provides fast, secure, and scalable global hosting for static sites.
+---
 
-You can also deploy it to any other static hosting service, including:
+## 🌍 Deployment
+
+This application is primarily hosted on **Azure Static Web Apps**, offering fast, secure, and scalable global hosting. You can deploy it to other static hosting services such as:
 
 - GitHub Pages
 - Netlify
 - Vercel
 - Amazon S3
 
-## AI & Tools Used
+---
 
-This application was built using a number of different AI models, agents, and tools including GitHub Copilot, Grok, Manus, Windsurf, Visual Studio Code, Claude 3.7 Sonnet, ChatGPT 4o, GPT 4.1.
+## 🤝 Contributing
 
-Additional resources:
-- https://favicon.io/favicon-converter/
-- https://iconfst.com/
+We welcome contributions! If you have ideas for features or improvements, please feel free to submit a pull request or open an issue on our GitHub repository.
 
-Total time to create this was less than 24 hours.
+---
 
-## Credits
+## 📝 License
 
-© 2025 Richard Crane. All rights reserved.
+This project is licensed under the MIT License. Feel free to use, modify, and distribute as you see fit.
+
+---
+
+<sub>Powered by [RepoBeacon](https://repobeacon.com)</sub>
